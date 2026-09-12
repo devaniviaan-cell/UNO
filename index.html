@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
 <title>QPG Card Battle</title>
 
@@ -15,19 +14,62 @@
   -webkit-tap-highlight-color:transparent;
 }
 
+:root{
+  --bg:#070913;
+  --panel:rgba(18,23,43,.82);
+  --panel2:rgba(28,34,60,.75);
+  --line:rgba(255,255,255,.11);
+  --text:#f7f8ff;
+  --muted:#8e98b8;
+  --purple:#8b72ff;
+  --pink:#ec5cff;
+  --cyan:#45dfff;
+  --green:#28e69a;
+  --danger:#ff526d;
+}
+
 html,body{
   margin:0;
   min-height:100%;
-  background:#080b14;
-  color:white;
-  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,Helvetica,sans-serif;
 }
 
 body{
   min-height:100vh;
+  overflow-x:hidden;
   background:
-    radial-gradient(circle at 50% -10%,#344277 0%,transparent 38%),
-    linear-gradient(180deg,#080b14,#10162a 70%,#060811);
+    radial-gradient(circle at 15% 10%,rgba(89,74,255,.28),transparent 28%),
+    radial-gradient(circle at 85% 15%,rgba(239,74,255,.20),transparent 25%),
+    radial-gradient(circle at 50% 90%,rgba(39,215,255,.12),transparent 30%),
+    #070913;
+}
+
+/* ---------- BACKGROUND ---------- */
+
+body:before,
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-2;
+}
+
+body:before{
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:45px 45px;
+  mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+body:after{
+  background:
+    radial-gradient(circle,rgba(255,255,255,.14) 1px,transparent 1px);
+  background-size:80px 80px;
+  opacity:.18;
 }
 
 button,input{
@@ -42,351 +84,560 @@ button{
   display:none!important;
 }
 
-/* ================= HOME ================= */
+/* ---------- HOME ---------- */
 
 #home{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px;
+  padding:24px;
 }
 
 .home-box{
   width:min(570px,100%);
-  padding:35px 25px;
-  border-radius:28px;
+  padding:42px 28px;
   text-align:center;
-  background:rgba(15,19,37,.93);
-  border:1px solid #29314b;
-  box-shadow:0 25px 90px rgba(0,0,0,.5);
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:32px;
+  background:
+    linear-gradient(145deg,
+      rgba(29,34,63,.92),
+      rgba(10,13,27,.92));
+  box-shadow:
+    0 40px 100px rgba(0,0,0,.55),
+    0 0 80px rgba(112,88,255,.10);
+  backdrop-filter:blur(22px);
+}
+
+.home-box:before{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:rgba(119,91,255,.16);
+  filter:blur(70px);
+  top:-150px;
+  left:-80px;
 }
 
 .logo{
-  font-size:clamp(48px,12vw,82px);
+  position:relative;
+  font-size:clamp(58px,13vw,90px);
   font-weight:1000;
-  letter-spacing:-6px;
-  background:linear-gradient(135deg,#fff,#778aff,#e64cff);
+  line-height:.9;
+  letter-spacing:-7px;
+  background:
+    linear-gradient(135deg,#fff 5%,#9f91ff 45%,#ef62ff 75%,#5beaff);
   -webkit-background-clip:text;
   color:transparent;
+  text-shadow:0 0 35px rgba(153,119,255,.18);
 }
 
 .subtitle{
-  color:#9ba5c0;
+  position:relative;
+  margin-top:12px;
+  margin-bottom:30px;
+  color:#aeb6d2;
+  font-size:12px;
   font-weight:900;
-  letter-spacing:4px;
-  margin-bottom:28px;
+  letter-spacing:5px;
 }
 
 .name-input{
+  position:relative;
   width:100%;
-  padding:15px;
-  border-radius:14px;
-  border:1px solid #343c5a;
-  background:#090c17;
-  color:#fff;
-  outline:none;
+  padding:17px 18px;
   margin-bottom:14px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.12);
+  outline:none;
+  background:rgba(4,7,17,.75);
+  color:#fff;
+  transition:.2s;
+}
+
+.name-input:focus{
+  border-color:#8877ff;
+  box-shadow:0 0 0 4px rgba(123,102,255,.10);
 }
 
 .menu-buttons{
+  position:relative;
   display:grid;
-  gap:11px;
+  gap:12px;
 }
 
 .menu-btn{
-  border:0;
-  border-radius:15px;
-  padding:16px;
-  color:white;
+  position:relative;
+  width:100%;
+  padding:16px 18px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:16px;
+  color:#fff;
   font-weight:1000;
-  background:#252d49;
+  background:linear-gradient(145deg,#252d4b,#171d35);
+  box-shadow:0 10px 25px rgba(0,0,0,.22);
+  transition:.18s;
+  overflow:hidden;
+}
+
+.menu-btn:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(110deg,transparent,rgba(255,255,255,.13),transparent);
+  transform:translateX(-120%);
+  transition:.5s;
+}
+
+.menu-btn:hover:before{
+  transform:translateX(120%);
 }
 
 .menu-btn:hover{
-  filter:brightness(1.15);
-  transform:translateY(-1px);
+  transform:translateY(-2px);
+  box-shadow:0 15px 30px rgba(0,0,0,.3);
 }
 
 .primary{
-  background:linear-gradient(135deg,#6174ff,#a443ff);
+  background:linear-gradient(135deg,#685cff,#aa43ff);
 }
 
 .green{
-  background:linear-gradient(135deg,#0d9c70,#19c88d);
+  background:linear-gradient(135deg,#08a976,#19d99b);
 }
 
 .orange{
-  background:linear-gradient(135deg,#e46b22,#efaa28);
+  background:linear-gradient(135deg,#e35c25,#f0aa27);
 }
 
 .small-note{
-  color:#69738f;
+  position:relative;
+  margin-top:20px;
+  color:#68728e;
   font-size:12px;
-  margin-top:18px;
 }
 
-/* ================= PANELS ================= */
+/* ---------- PANELS ---------- */
 
 .panel{
-  width:min(600px,calc(100% - 30px));
+  width:min(610px,calc(100% - 28px));
   margin:30px auto;
-  padding:25px;
-  border-radius:24px;
-  background:#11162a;
-  border:1px solid #2b3450;
-  box-shadow:0 20px 60px rgba(0,0,0,.4);
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:linear-gradient(145deg,rgba(24,30,53,.92),rgba(10,14,28,.91));
+  box-shadow:0 30px 80px rgba(0,0,0,.42);
+  backdrop-filter:blur(20px);
 }
 
 .panel h2{
   margin-top:0;
+  font-size:26px;
 }
 
 .panel input{
   width:100%;
-  padding:14px;
+  padding:15px;
   margin:6px 0;
-  border-radius:12px;
-  border:1px solid #353e5c;
-  background:#080b15;
-  color:white;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background:#080b16;
+  color:#fff;
   outline:none;
+}
+
+.panel input:focus{
+  border-color:#8174ff;
 }
 
 .back-btn{
   padding:9px 13px;
-  border-radius:10px;
-  border:1px solid #303850;
-  background:transparent;
-  color:#adb6d0;
-  margin-bottom:18px;
+  border-radius:11px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  color:#aeb7d2;
 }
 
 .status{
   text-align:center;
-  color:#8c96b2;
-  min-height:22px;
-  margin-top:12px;
+  min-height:20px;
+  margin-top:13px;
+  color:#909ab8;
 }
 
 .code-display{
   text-align:center;
-  font-size:43px;
+  padding:24px;
+  margin:20px 0;
+  border-radius:20px;
+  color:#a89bff;
+  font-size:46px;
   font-weight:1000;
-  letter-spacing:9px;
-  color:#8c9aff;
-  padding:20px;
-  border-radius:18px;
-  background:#080b15;
-  margin:18px 0;
+  letter-spacing:10px;
+  background:
+    linear-gradient(145deg,rgba(103,85,255,.13),rgba(236,83,255,.07)),
+    #080b16;
+  border:1px solid rgba(137,117,255,.25);
+  box-shadow:
+    inset 0 0 35px rgba(110,90,255,.08),
+    0 0 35px rgba(104,83,255,.08);
 }
 
 .player-list{
   display:grid;
-  gap:8px;
-  margin:15px 0;
+  gap:9px;
+  margin:18px 0;
 }
 
 .player-row{
   display:flex;
   justify-content:space-between;
-  padding:12px 14px;
-  border-radius:11px;
-  background:#1a2036;
+  padding:13px 15px;
+  border-radius:13px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.045);
 }
 
-/* ================= GAME ================= */
+/* ---------- GAME ---------- */
 
 #game{
   min-height:100vh;
   display:flex;
   flex-direction:column;
+  position:relative;
+}
+
+.game-glow{
+  position:fixed;
+  width:450px;
+  height:450px;
+  border-radius:50%;
+  background:rgba(103,83,255,.09);
+  filter:blur(90px);
+  pointer-events:none;
+  left:50%;
+  top:45%;
+  transform:translate(-50%,-50%);
+  z-index:-1;
 }
 
 .topbar{
-  height:62px;
-  padding:0 15px;
+  height:68px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:rgba(5,7,14,.86);
-  border-bottom:1px solid #252c43;
+  gap:10px;
+  padding:0 18px;
   position:sticky;
   top:0;
-  z-index:20;
-  backdrop-filter:blur(12px);
+  z-index:30;
+  background:rgba(5,7,15,.76);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(20px);
 }
 
 .turn-label{
+  padding:8px 13px;
+  border-radius:10px;
+  background:rgba(118,99,255,.11);
+  border:1px solid rgba(137,119,255,.18);
+  color:#d0caff;
+  font-size:13px;
   font-weight:1000;
 }
 
 .deck-info{
-  color:#8993af;
+  color:#7f8aa8;
   font-size:12px;
 }
 
 .strike-box{
-  color:#ff687c;
-  font-size:12px;
-  font-weight:900;
+  padding:7px 10px;
+  border-radius:9px;
+  color:#ff7287;
+  background:rgba(255,70,100,.07);
+  font-size:11px;
+  font-weight:1000;
 }
 
 .table{
   width:100%;
-  max-width:1200px;
+  max-width:1250px;
   margin:auto;
-  padding:14px;
-  flex:1;
+  padding:15px;
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:13px;
+  flex:1;
 }
+
+/* ---------- PLAYERS ---------- */
 
 .players-area{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:8px;
+  gap:9px;
 }
 
 .player-seat{
-  min-height:65px;
-  padding:10px;
-  border-radius:14px;
-  background:#161c31;
-  border:1px solid #2b3450;
+  min-height:72px;
+  padding:11px 13px;
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,.08);
+  background:
+    linear-gradient(145deg,rgba(31,38,67,.85),rgba(15,19,37,.85));
+  transition:.25s;
 }
 
 .player-seat.active{
-  border-color:#7c8cff;
-  box-shadow:0 0 20px rgba(100,120,255,.25);
+  border-color:rgba(137,121,255,.65);
+  box-shadow:
+    0 0 0 1px rgba(130,113,255,.15),
+    0 0 28px rgba(115,95,255,.17);
+}
+
+.player-seat.active:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,.08);
+  animation:pulseSeat 1.6s infinite;
 }
 
 .player-seat.lost{
-  opacity:.4;
-  border-color:#702738;
+  opacity:.38;
+  filter:grayscale(.7);
 }
 
 .seat-name{
-  font-weight:1000;
+  position:relative;
   font-size:13px;
+  font-weight:1000;
 }
 
 .seat-count{
-  color:#8d97b2;
-  font-size:12px;
-  margin-top:6px;
+  position:relative;
+  margin-top:7px;
+  color:#7e89a7;
+  font-size:11px;
 }
 
+@keyframes pulseSeat{
+  0%,100%{opacity:.3}
+  50%{opacity:1}
+}
+
+/* ---------- TABLE CENTER ---------- */
+
 .center{
+  min-height:275px;
   flex:1;
-  min-height:240px;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:25px;
+  gap:30px;
+  position:relative;
+}
+
+.center:before{
+  content:"";
+  position:absolute;
+  width:min(600px,90vw);
+  height:190px;
+  border-radius:50%;
+  background:radial-gradient(
+    ellipse,
+    rgba(97,83,255,.11),
+    transparent 70%
+  );
+  pointer-events:none;
 }
 
 .pile{
-  width:115px;
-  height:160px;
-  border-radius:17px;
+  width:118px;
+  height:166px;
+  position:relative;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:1000;
+  border-radius:19px;
   font-size:28px;
-  box-shadow:0 15px 35px rgba(0,0,0,.4);
+  font-weight:1000;
+  box-shadow:
+    0 20px 35px rgba(0,0,0,.45),
+    0 0 35px rgba(96,80,255,.08);
 }
 
 .draw-pile{
   cursor:pointer;
-  border:4px solid #7382ff;
+  border:3px solid rgba(126,139,255,.9);
   background:
     repeating-linear-gradient(
-      45deg,
-      #22294b 0,
-      #22294b 8px,
-      #30385e 8px,
-      #30385e 16px
+      -45deg,
+      #1b2242 0,
+      #1b2242 9px,
+      #29325a 9px,
+      #29325a 18px
     );
+  transition:.18s;
+}
+
+.draw-pile:after{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:12px;
+}
+
+.draw-pile:hover{
+  transform:translateY(-5px) rotate(-1deg);
+  box-shadow:
+    0 25px 45px rgba(0,0,0,.5),
+    0 0 35px rgba(100,115,255,.2);
 }
 
 .draw-pile:active{
-  transform:scale(.96);
+  transform:scale(.95);
 }
 
+/* ---------- CARDS ---------- */
+
 .card{
-  width:90px;
-  height:128px;
+  width:92px;
+  height:132px;
   flex:0 0 auto;
-  border-radius:14px;
-  border:3px solid rgba(255,255,255,.8);
+  position:relative;
   padding:8px;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  color:white;
+  border:2px solid rgba(255,255,255,.75);
+  border-radius:16px;
+  color:#fff;
   font-weight:1000;
-  box-shadow:0 10px 20px rgba(0,0,0,.35);
+  overflow:hidden;
+  box-shadow:
+    0 14px 25px rgba(0,0,0,.36),
+    inset 0 1px 0 rgba(255,255,255,.35);
   user-select:none;
+}
+
+.card:before{
+  content:"";
+  position:absolute;
+  width:130%;
+  height:45%;
+  top:-20%;
+  left:-15%;
+  transform:rotate(-12deg);
+  background:linear-gradient(
+    to bottom,
+    rgba(255,255,255,.22),
+    transparent
+  );
+  pointer-events:none;
+}
+
+.card:after{
+  content:"";
+  position:absolute;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:rgba(255,255,255,.15);
+  filter:blur(18px);
+  right:-15px;
+  bottom:-15px;
+  pointer-events:none;
 }
 
 .card.clickable{
   cursor:pointer;
+  transition:
+    transform .18s,
+    box-shadow .18s;
 }
 
 .card.clickable:hover{
-  transform:translateY(-10px);
+  transform:translateY(-15px) rotate(-1deg);
+  box-shadow:
+    0 28px 35px rgba(0,0,0,.45),
+    0 0 20px rgba(255,255,255,.09);
 }
 
 .corner{
+  position:relative;
+  z-index:2;
   font-size:14px;
 }
 
 .symbol{
+  position:relative;
+  z-index:2;
   text-align:center;
-  font-size:30px;
+  font-size:31px;
+  text-shadow:0 3px 7px rgba(0,0,0,.3);
 }
 
 .red{
-  background:linear-gradient(145deg,#ff4056,#a80c29);
+  background:
+    linear-gradient(145deg,#ff5267,#a40d2b);
 }
 
 .blue{
-  background:linear-gradient(145deg,#428fff,#154ca5);
+  background:
+    linear-gradient(145deg,#4c9bff,#1549a5);
 }
 
 .green-card{
-  background:linear-gradient(145deg,#31d98b,#087247);
+  background:
+    linear-gradient(145deg,#39dfa0,#087148);
 }
 
 .yellow{
-  background:linear-gradient(145deg,#ffe04b,#b97800);
-  color:#111;
+  background:
+    linear-gradient(145deg,#ffe553,#b87500);
+  color:#17120a;
 }
 
 .wild{
   background:
     conic-gradient(
-      #ff3e55 0 25%,
-      #ffd43d 25% 50%,
-      #25d989 50% 75%,
-      #438eff 75% 100%
+      from 45deg,
+      #ff4660 0 25%,
+      #ffd83e 25% 50%,
+      #2ddd91 50% 75%,
+      #4795ff 75% 100%
     );
 }
 
+/* ---------- HAND ---------- */
+
 .hand-title{
-  color:#8993b0;
-  font-size:13px;
-  margin-bottom:8px;
+  margin:2px 0 7px;
+  color:#858fab;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1px;
 }
 
 .cards{
   display:flex;
-  gap:8px;
+  gap:9px;
   overflow-x:auto;
-  padding:5px 3px 15px;
+  overflow-y:visible;
+  padding:10px 5px 18px;
+  scrollbar-width:thin;
+  scrollbar-color:#444d70 transparent;
 }
 
 .action-bar{
@@ -397,14 +648,30 @@ button{
 
 .action-btn{
   padding:12px 20px;
-  border:0;
-  border-radius:12px;
-  color:white;
-  background:#262e4a;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:13px;
+  color:#fff;
+  background:linear-gradient(145deg,#293252,#1a213b);
   font-weight:1000;
+  transition:.18s;
 }
 
-/* ================= OVERLAYS ================= */
+.action-btn:hover{
+  transform:translateY(-2px);
+}
+
+/* ---------- PENALTY ---------- */
+
+.penalty{
+  min-height:22px;
+  text-align:center;
+  color:#ff667c;
+  font-size:13px;
+  font-weight:1000;
+  text-shadow:0 0 15px rgba(255,70,100,.25);
+}
+
+/* ---------- OVERLAYS ---------- */
 
 .overlay{
   position:fixed;
@@ -414,65 +681,75 @@ button{
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:rgba(3,5,12,.85);
-  backdrop-filter:blur(10px);
+  background:rgba(3,5,12,.84);
+  backdrop-filter:blur(13px);
 }
 
 .overlay-box{
-  width:min(440px,100%);
-  padding:28px;
+  width:min(450px,100%);
+  padding:31px;
   text-align:center;
-  border-radius:24px;
-  background:#11162a;
-  border:1px solid #333b58;
-  box-shadow:0 25px 80px rgba(0,0,0,.5);
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:27px;
+  background:
+    linear-gradient(145deg,rgba(28,34,61,.96),rgba(9,12,25,.97));
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.6),
+    0 0 70px rgba(111,88,255,.1);
+}
+
+.overlay-icon{
+  font-size:62px;
+  filter:drop-shadow(0 10px 20px rgba(0,0,0,.4));
 }
 
 .color-buttons{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:11px;
 }
 
 .color-btn{
-  padding:16px;
-  border:0;
-  border-radius:13px;
-  color:white;
+  padding:17px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  color:#fff;
   font-weight:1000;
+  transition:.15s;
+}
+
+.color-btn:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.1);
 }
 
 .color-red{
-  background:#d72845;
+  background:#d62b48;
 }
 
 .color-blue{
-  background:#2468c9;
+  background:#256bcf;
 }
 
 .color-green{
-  background:#15935d;
+  background:#149762;
 }
 
 .color-yellow{
-  background:#d59d08;
+  background:#d5a00c;
   color:#111;
 }
 
 .winner-name{
+  margin:18px 0 24px;
   font-size:35px;
   font-weight:1000;
-  margin:20px 0;
+  background:linear-gradient(90deg,#fff,#a493ff,#ef68ff);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
-.penalty{
-  color:#ff6178;
-  font-weight:1000;
-  font-size:15px;
-  min-height:20px;
-}
-
-/* ================= RESPONSIVE ================= */
+/* ---------- MOBILE ---------- */
 
 @media(max-width:700px){
 
@@ -481,33 +758,60 @@ button{
   }
 
   .center{
-    min-height:190px;
-    gap:12px;
+    min-height:205px;
+    gap:14px;
   }
 
   .pile{
-    width:92px;
-    height:132px;
+    width:91px;
+    height:130px;
   }
 
   .card{
     width:76px;
-    height:108px;
+    height:109px;
+    border-radius:14px;
   }
 
   .symbol{
     font-size:26px;
   }
+
+  .topbar{
+    padding:0 9px;
+  }
+
+  .turn-label{
+    font-size:11px;
+  }
+
+  .strike-box{
+    font-size:10px;
+  }
+
 }
 
 @media(max-width:430px){
 
+  .home-box{
+    padding:32px 20px;
+  }
+
   .logo{
-    letter-spacing:-4px;
+    letter-spacing:-5px;
   }
 
   .center{
     gap:8px;
+  }
+
+  .pile{
+    width:84px;
+    height:122px;
+  }
+
+  .table{
+    padding:10px;
   }
 
 }
@@ -516,417 +820,393 @@ button{
 
 <body>
 
-<!-- =====================================================
-     HOME
-===================================================== -->
+<!-- ======================================================
+ HOME
+====================================================== -->
 
 <section id="home">
 
-  <div class="home-box">
+<div class="home-box">
 
-    <div class="logo">QPG</div>
+  <div class="logo">QPG</div>
 
-    <div class="subtitle">
-      CARD BATTLE
-    </div>
-
-    <input
-      id="playerName"
-      class="name-input"
-      maxlength="16"
-      placeholder="Enter your name"
-      autocomplete="off"
-    >
-
-    <div class="menu-buttons">
-
-      <button
-        class="menu-btn primary"
-        onclick="showBots()">
-        🤖 PLAY BOTS
-      </button>
-
-      <button
-        class="menu-btn green"
-        onclick="showLocal()">
-        👥 LOCAL PLAY
-      </button>
-
-      <button
-        class="menu-btn orange"
-        onclick="showOnline()">
-        🌐 ONLINE PLAY
-      </button>
-
-    </div>
-
-    <div class="small-note">
-      2–4 players • No playable-card hints
-    </div>
-
+  <div class="subtitle">
+    CARD BATTLE
   </div>
 
-</section>
-
-
-<!-- =====================================================
-     BOTS
-===================================================== -->
-
-<section id="botsPanel" class="panel hidden">
-
-  <button
-    class="back-btn"
-    onclick="goHome()">
-    ← Back
-  </button>
-
-  <h2>🤖 Play Bots</h2>
-
-  <p style="color:#8c96b2">
-    The bots will play completely by themselves.
-  </p>
-
-  <button
-    class="menu-btn primary"
-    onclick="startBots(1)">
-    1 Bot
-  </button>
-
-  <br>
-
-  <button
-    class="menu-btn primary"
-    onclick="startBots(2)">
-    2 Bots
-  </button>
-
-  <br>
-
-  <button
-    class="menu-btn primary"
-    onclick="startBots(3)">
-    3 Bots
-  </button>
-
-</section>
-
-
-<!-- =====================================================
-     LOCAL
-===================================================== -->
-
-<section id="localPanel" class="panel hidden">
-
-  <button
-    class="back-btn"
-    onclick="goHome()">
-    ← Back
-  </button>
-
-  <h2>👥 Local Multiplayer</h2>
-
   <input
-    id="local2"
+    id="playerName"
+    class="name-input"
     maxlength="16"
-    placeholder="Player 2 name"
+    placeholder="Enter your name"
+    autocomplete="off"
   >
 
-  <input
-    id="local3"
-    maxlength="16"
-    placeholder="Player 3 name (optional)"
-  >
+  <div class="menu-buttons">
 
-  <input
-    id="local4"
-    maxlength="16"
-    placeholder="Player 4 name (optional)"
-  >
-
-  <button
-    class="menu-btn green"
-    onclick="startLocal()">
-    START GAME
-  </button>
-
-</section>
-
-
-<!-- =====================================================
-     ONLINE
-===================================================== -->
-
-<section id="onlinePanel" class="panel hidden">
-
-  <button
-    class="back-btn"
-    onclick="goHome()">
-    ← Back
-  </button>
-
-  <h2>🌐 Online Multiplayer</h2>
-
-  <p style="color:#8c96b2">
-    Create a room and share the code.
-  </p>
-
-  <button
-    class="menu-btn orange"
-    onclick="createLobby()">
-    CREATE LOBBY
-  </button>
-
-  <br>
-
-  <input
-    id="joinCode"
-    maxlength="4"
-    placeholder="4-character code"
-    style="
-      text-align:center;
-      text-transform:uppercase;
-      letter-spacing:5px;
-      font-weight:1000;
-    "
-  >
-
-  <button
-    class="menu-btn primary"
-    onclick="joinLobby()">
-    JOIN LOBBY
-  </button>
-
-  <div
-    id="onlineStatus"
-    class="status">
-  </div>
-
-</section>
-
-
-<!-- =====================================================
-     LOBBY
-===================================================== -->
-
-<section id="lobbyPanel" class="panel hidden">
-
-  <h2>🎮 Game Lobby</h2>
-
-  <div
-    id="hostCode"
-    class="code-display">
-    ----
-  </div>
-
-  <p style="text-align:center;color:#8d97b2">
-    Share this code with your friends.
-  </p>
-
-  <div
-    id="lobbyPlayers"
-    class="player-list">
-  </div>
-
-  <div id="hostControls">
+    <button
+      class="menu-btn primary"
+      onclick="showBots()">
+      🤖 PLAY BOTS
+    </button>
 
     <button
       class="menu-btn green"
-      onclick="hostStartGame()">
-      START GAME
+      onclick="showLocal()">
+      👥 LOCAL PLAY
+    </button>
+
+    <button
+      class="menu-btn orange"
+      onclick="showOnline()">
+      🌐 ONLINE PLAY
     </button>
 
   </div>
 
-  <button
-    class="back-btn"
-    style="margin-top:12px"
-    onclick="leaveLobby()">
-    Leave Lobby
-  </button>
-
-  <div
-    id="lobbyStatus"
-    class="status">
+  <div class="small-note">
+    2–4 players • PeerJS multiplayer • No card hints
   </div>
+
+</div>
 
 </section>
 
 
-<!-- =====================================================
-     GAME
-===================================================== -->
+<!-- ======================================================
+ BOTS
+====================================================== -->
+
+<section id="botsPanel" class="panel hidden">
+
+<button class="back-btn" onclick="goHome()">← Back</button>
+
+<h2>🤖 Play Bots</h2>
+
+<p style="color:#8e98b8">
+The bots automatically play their own turns.
+</p>
+
+<button
+  class="menu-btn primary"
+  onclick="startBots(1)">
+  1 BOT
+</button>
+
+<br>
+
+<button
+  class="menu-btn primary"
+  onclick="startBots(2)">
+  2 BOTS
+</button>
+
+<br>
+
+<button
+  class="menu-btn primary"
+  onclick="startBots(3)">
+  3 BOTS
+</button>
+
+</section>
+
+
+<!-- ======================================================
+ LOCAL
+====================================================== -->
+
+<section id="localPanel" class="panel hidden">
+
+<button class="back-btn" onclick="goHome()">← Back</button>
+
+<h2>👥 Local Multiplayer</h2>
+
+<input
+  id="local2"
+  maxlength="16"
+  placeholder="Player 2 name"
+>
+
+<input
+  id="local3"
+  maxlength="16"
+  placeholder="Player 3 name (optional)"
+>
+
+<input
+  id="local4"
+  maxlength="16"
+  placeholder="Player 4 name (optional)"
+>
+
+<button
+  class="menu-btn green"
+  onclick="startLocal()">
+  START GAME
+</button>
+
+</section>
+
+
+<!-- ======================================================
+ ONLINE
+====================================================== -->
+
+<section id="onlinePanel" class="panel hidden">
+
+<button class="back-btn" onclick="goHome()">← Back</button>
+
+<h2>🌐 Online Multiplayer</h2>
+
+<p style="color:#8e98b8">
+Create a room and send the code to your friends.
+</p>
+
+<button
+  class="menu-btn orange"
+  onclick="createLobby()">
+  CREATE LOBBY
+</button>
+
+<br>
+
+<input
+  id="joinCode"
+  maxlength="4"
+  placeholder="4-CHARACTER CODE"
+  style="
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-weight:1000;
+  "
+>
+
+<button
+  class="menu-btn primary"
+  onclick="joinLobby()">
+  JOIN LOBBY
+</button>
+
+<div id="onlineStatus" class="status"></div>
+
+</section>
+
+
+<!-- ======================================================
+ LOBBY
+====================================================== -->
+
+<section id="lobbyPanel" class="panel hidden">
+
+<h2>🎮 Game Lobby</h2>
+
+<div id="hostCode" class="code-display">
+----
+</div>
+
+<p style="text-align:center;color:#8e98b8">
+Share this code with your friends.
+</p>
+
+<div id="lobbyPlayers" class="player-list"></div>
+
+<div id="hostControls">
+
+<button
+  class="menu-btn green"
+  onclick="hostStartGame()">
+  START GAME
+</button>
+
+</div>
+
+<button
+  class="back-btn"
+  style="margin-top:14px"
+  onclick="leaveLobby()">
+  Leave Lobby
+</button>
+
+<div id="lobbyStatus" class="status"></div>
+
+</section>
+
+
+<!-- ======================================================
+ GAME
+====================================================== -->
 
 <section id="game" class="hidden">
 
-  <div class="topbar">
+<div class="game-glow"></div>
 
-    <div id="turnLabel" class="turn-label">
-      Loading...
-    </div>
+<div class="topbar">
 
-    <div id="strikeBox" class="strike-box">
-      Illegal moves: 0/3
-    </div>
-
-    <div id="deckInfo" class="deck-info">
-      Cards: --
-    </div>
-
+  <div id="turnLabel" class="turn-label">
+    Loading...
   </div>
 
-
-  <div class="table">
-
-    <div
-      id="playersArea"
-      class="players-area">
-    </div>
-
-
-    <div class="center">
-
-      <div
-        id="drawPile"
-        class="pile draw-pile"
-        onclick="drawCard()">
-        DRAW
-      </div>
-
-      <div
-        id="discardPile"
-        class="pile">
-        ?
-      </div>
-
-    </div>
-
-
-    <div>
-
-      <div class="hand-title">
-        YOUR HAND
-      </div>
-
-      <div
-        id="myCards"
-        class="cards">
-      </div>
-
-    </div>
-
-
-    <div
-      id="penaltyMessage"
-      class="penalty">
-    </div>
-
-
-    <div class="action-bar">
-
-      <button
-        class="action-btn"
-        onclick="drawCard()">
-        + DRAW CARD
-      </button>
-
-      <button
-        class="action-btn"
-        onclick="leaveGame()">
-        EXIT
-      </button>
-
-    </div>
-
+  <div id="strikeBox" class="strike-box">
+    Illegal moves: 0/3
   </div>
 
-</section>
-
-
-<!-- =====================================================
-     COLOR
-===================================================== -->
-
-<div
-  id="colorOverlay"
-  class="overlay hidden">
-
-  <div class="overlay-box">
-
-    <h2>Choose a colour</h2>
-
-    <div class="color-buttons">
-
-      <button
-        class="color-btn color-red"
-        onclick="chooseColor('red')">
-        RED
-      </button>
-
-      <button
-        class="color-btn color-blue"
-        onclick="chooseColor('blue')">
-        BLUE
-      </button>
-
-      <button
-        class="color-btn color-green"
-        onclick="chooseColor('green')">
-        GREEN
-      </button>
-
-      <button
-        class="color-btn color-yellow"
-        onclick="chooseColor('yellow')">
-        YELLOW
-      </button>
-
-    </div>
-
+  <div id="deckInfo" class="deck-info">
+    Deck: --
   </div>
 
 </div>
 
 
-<!-- =====================================================
-     RESULT
-===================================================== -->
+<div class="table">
+
+<div id="playersArea" class="players-area"></div>
+
+
+<div class="center">
+
+  <div
+    id="drawPile"
+    class="pile draw-pile"
+    onclick="drawCard()">
+    DRAW
+  </div>
+
+  <div
+    id="discardPile"
+    class="pile">
+    ?
+  </div>
+
+</div>
+
+
+<div>
+
+<div class="hand-title">
+YOUR HAND
+</div>
+
+<div id="myCards" class="cards"></div>
+
+</div>
+
+
+<div
+  id="penaltyMessage"
+  class="penalty">
+</div>
+
+
+<div class="action-bar">
+
+<button
+  class="action-btn"
+  onclick="drawCard()">
+  + DRAW
+</button>
+
+<button
+  class="action-btn"
+  onclick="leaveGame()">
+  EXIT
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+ COLOR PICKER
+====================================================== -->
+
+<div
+  id="colorOverlay"
+  class="overlay hidden">
+
+<div class="overlay-box">
+
+<div class="overlay-icon">🌈</div>
+
+<h2>Choose a colour</h2>
+
+<div class="color-buttons">
+
+<button
+  class="color-btn color-red"
+  onclick="chooseColor('red')">
+  RED
+</button>
+
+<button
+  class="color-btn color-blue"
+  onclick="chooseColor('blue')">
+  BLUE
+</button>
+
+<button
+  class="color-btn color-green"
+  onclick="chooseColor('green')">
+  GREEN
+</button>
+
+<button
+  class="color-btn color-yellow"
+  onclick="chooseColor('yellow')">
+  YELLOW
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ======================================================
+ RESULT
+====================================================== -->
 
 <div
   id="winnerOverlay"
   class="overlay hidden">
 
-  <div class="overlay-box">
+<div class="overlay-box">
 
-    <div id="resultIcon"
-         style="font-size:55px">
-      🏆
-    </div>
+<div
+  id="resultIcon"
+  class="overlay-icon">
+  🏆
+</div>
 
-    <h2 id="resultTitle">
-      Game Over
-    </h2>
+<h2 id="resultTitle">
+Game Over
+</h2>
 
-    <div
-      id="winnerName"
-      class="winner-name">
-    </div>
+<div
+  id="winnerName"
+  class="winner-name">
+</div>
 
-    <button
-      class="menu-btn primary"
-      onclick="restartCurrentGame()">
-      PLAY AGAIN
-    </button>
+<button
+  class="menu-btn primary"
+  onclick="restartCurrentGame()">
+  PLAY AGAIN
+</button>
 
-    <br>
+<br>
 
-    <button
-      class="menu-btn"
-      onclick="goHome()">
-      MAIN MENU
-    </button>
+<button
+  class="menu-btn"
+  onclick="goHome()">
+  MAIN MENU
+</button>
 
-  </div>
+</div>
 
 </div>
 
@@ -934,29 +1214,28 @@ button{
 <script>
 "use strict";
 
-/* =====================================================
-   GLOBALS
-===================================================== */
+/* ======================================================
+ GLOBALS
+====================================================== */
 
-let playerName = "";
-let mode = null;
+let playerName="";
+let mode=null;
 
-let peer = null;
-let hostConnection = null;
-let connections = {};
+let peer=null;
+let hostConnection=null;
+let connections={};
 
-let roomCode = "";
-let isHost = false;
-let myPlayerIndex = 0;
+let roomCode="";
+let isHost=false;
+let myPlayerIndex=0;
 
-let state = null;
+let state=null;
+let pendingCardIndex=null;
 
-let pendingCardIndex = null;
+const MAX_PLAYERS=4;
+const MAX_ILLEGAL=3;
 
-const MAX_PLAYERS = 4;
-const MAX_ILLEGAL = 3;
-
-const COLORS = [
+const COLORS=[
   "red",
   "blue",
   "green",
@@ -964,87 +1243,76 @@ const COLORS = [
 ];
 
 
-/* =====================================================
-   ELEMENTS
-===================================================== */
+/* ======================================================
+ ELEMENTS
+====================================================== */
 
-const home =
-  document.getElementById("home");
+const home=document.getElementById("home");
+const botsPanel=document.getElementById("botsPanel");
+const localPanel=document.getElementById("localPanel");
+const onlinePanel=document.getElementById("onlinePanel");
+const lobbyPanel=document.getElementById("lobbyPanel");
+const game=document.getElementById("game");
 
-const botsPanel =
-  document.getElementById("botsPanel");
-
-const localPanel =
-  document.getElementById("localPanel");
-
-const onlinePanel =
-  document.getElementById("onlinePanel");
-
-const lobbyPanel =
-  document.getElementById("lobbyPanel");
-
-const game =
-  document.getElementById("game");
-
-const playerNameInput =
+const playerNameInput=
   document.getElementById("playerName");
 
-const myCards =
+const myCards=
   document.getElementById("myCards");
 
-const playersArea =
+const playersArea=
   document.getElementById("playersArea");
 
-const turnLabel =
+const turnLabel=
   document.getElementById("turnLabel");
 
-const strikeBox =
+const strikeBox=
   document.getElementById("strikeBox");
 
-const deckInfo =
+const deckInfo=
   document.getElementById("deckInfo");
 
-const discardPile =
+const discardPile=
   document.getElementById("discardPile");
 
-const colorOverlay =
+const colorOverlay=
   document.getElementById("colorOverlay");
 
-const winnerOverlay =
+const winnerOverlay=
   document.getElementById("winnerOverlay");
 
-const winnerName =
+const winnerName=
   document.getElementById("winnerName");
 
-const resultIcon =
+const resultIcon=
   document.getElementById("resultIcon");
 
-const resultTitle =
+const resultTitle=
   document.getElementById("resultTitle");
 
-const penaltyMessage =
+const penaltyMessage=
   document.getElementById("penaltyMessage");
 
-const lobbyPlayers =
+const lobbyPlayers=
   document.getElementById("lobbyPlayers");
 
-const hostCode =
+const hostCode=
   document.getElementById("hostCode");
 
-const onlineStatus =
+const onlineStatus=
   document.getElementById("onlineStatus");
 
-const lobbyStatus =
+const lobbyStatus=
   document.getElementById("lobbyStatus");
 
 
-playerNameInput.value =
-  localStorage.getItem("qpgCardName") || "";
+playerNameInput.value=
+  localStorage.getItem("qpgCardName")||"";
 
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+/* ======================================================
+ NAVIGATION
+====================================================== */
 
 function hideAll(){
 
@@ -1057,18 +1325,14 @@ function hideAll(){
 
 }
 
-
 function saveName(){
 
-  let name =
+  let n=
     playerNameInput.value.trim();
 
-  if(!name){
-    name="Player";
-  }
+  if(!n)n="Player";
 
-  playerName =
-    name.slice(0,16);
+  playerName=n.slice(0,16);
 
   localStorage.setItem(
     "qpgCardName",
@@ -1076,7 +1340,6 @@ function saveName(){
   );
 
 }
-
 
 window.goHome=function(){
 
@@ -1094,43 +1357,37 @@ window.goHome=function(){
 
 };
 
-
 window.showBots=function(){
 
   saveName();
 
   hideAll();
-
   botsPanel.classList.remove("hidden");
 
 };
-
 
 window.showLocal=function(){
 
   saveName();
 
   hideAll();
-
   localPanel.classList.remove("hidden");
 
 };
-
 
 window.showOnline=function(){
 
   saveName();
 
   hideAll();
-
   onlinePanel.classList.remove("hidden");
 
 };
 
 
-/* =====================================================
-   DECK
-===================================================== */
+/* ======================================================
+ DECK
+====================================================== */
 
 function createDeck(){
 
@@ -1138,16 +1395,11 @@ function createDeck(){
 
   for(const color of COLORS){
 
-    /* One zero */
-
     deck.push({
       color,
       value:"0",
       type:"number"
     });
-
-
-    /* Two of every 1-9 */
 
     for(let n=1;n<=9;n++){
 
@@ -1165,22 +1417,7 @@ function createDeck(){
 
     }
 
-
-    /* Special cards */
-
     for(let i=0;i<2;i++){
-
-      deck.push({
-        color,
-        value:"SKIP",
-        type:"skip"
-      });
-
-      deck.push({
-        color,
-        value:"REVERSE",
-        type:"reverse"
-      });
 
       deck.push({
         color,
@@ -1200,12 +1437,21 @@ function createDeck(){
         type:"draw10"
       });
 
+      deck.push({
+        color,
+        value:"SKIP",
+        type:"skip"
+      });
+
+      deck.push({
+        color,
+        value:"REVERSE",
+        type:"reverse"
+      });
+
     }
 
   }
-
-
-  /* Wild cards */
 
   for(let i=0;i<4;i++){
 
@@ -1223,147 +1469,87 @@ function createDeck(){
 
   }
 
-
   return shuffle(deck);
 
 }
 
+function shuffle(a){
 
-function shuffle(array){
-
-  for(
-    let i=array.length-1;
-    i>0;
-    i--
-  ){
+  for(let i=a.length-1;i>0;i--){
 
     const j=
-      Math.floor(
-        Math.random()*(i+1)
-      );
+      Math.floor(Math.random()*(i+1));
 
-    [
-      array[i],
-      array[j]
-    ]=[
-      array[j],
-      array[i]
-    ];
+    [a[i],a[j]]=[a[j],a[i]];
 
   }
 
-  return array;
+  return a;
 
 }
 
 
-/* =====================================================
-   GAME CREATION
-===================================================== */
+/* ======================================================
+ PLAYERS / GAME
+====================================================== */
 
-function makePlayer(
-  name,
-  bot
-){
+function makePlayer(name,bot){
 
-  return {
-
+  return{
     id:randomID(),
-
-    name:name || "Player",
-
+    name:name||"Player",
     hand:[],
-
     bot:!!bot,
-
     connected:true,
-
     illegalMoves:0,
-
     eliminated:false
-
   };
 
 }
-
 
 function createGame(players){
 
-  const deck=createDeck();
-
-  const newState={
-
+  const s={
     players,
-
-    deck,
-
+    deck:createDeck(),
     discard:[],
-
     turn:0,
-
     direction:1,
-
     currentColor:null,
-
     winner:null,
-
     loser:null,
-
     started:true,
-
     lastMessage:""
-
   };
 
+  players.forEach(p=>{
 
-  /* Deal 7 cards */
-
-  for(
-    let i=0;
-    i<players.length;
-    i++
-  ){
-
-    for(
-      let x=0;
-      x<7;
-      x++
-    ){
-
-      drawFromDeck(
-        newState,
-        players[i]
-      );
-
+    for(let i=0;i<7;i++){
+      drawFromDeck(s,p);
     }
 
-  }
-
-
-  /* First discard */
+  });
 
   let first=null;
 
-  while(newState.deck.length){
+  while(s.deck.length){
 
-    first=newState.deck.pop();
+    const c=s.deck.pop();
 
     if(
-      first.type==="number" ||
-      first.type==="skip" ||
-      first.type==="reverse"
+      c.type==="number"||
+      c.type==="skip"||
+      c.type==="reverse"
     ){
 
+      first=c;
       break;
 
     }
 
-    newState.deck.unshift(first);
-
-    first=null;
+    s.deck.unshift(c);
 
   }
-
 
   if(!first){
 
@@ -1375,442 +1561,258 @@ function createGame(players){
 
   }
 
+  s.discard.push(first);
+  s.currentColor=first.color;
 
-  newState.discard.push(first);
-
-  newState.currentColor=
-    first.color;
-
-
-  return newState;
+  return s;
 
 }
 
+function drawFromDeck(s,p){
 
-/* =====================================================
-   DRAW
-===================================================== */
-
-function drawFromDeck(
-  s,
-  player
-){
-
-  if(s.deck.length===0){
-
+  if(s.deck.length===0)
     recycleDiscard(s);
 
-  }
-
-  if(s.deck.length>0){
-
-    player.hand.push(
-      s.deck.pop()
-    );
-
-  }
+  if(s.deck.length>0)
+    p.hand.push(s.deck.pop());
 
 }
-
 
 function recycleDiscard(s){
 
-  if(s.discard.length<=1){
+  if(s.discard.length<=1)
     return;
-  }
 
-  const top=
-    s.discard.pop();
+  const top=s.discard.pop();
 
   s.deck=
-    shuffle(
-      s.discard.splice(0)
-    );
+    shuffle(s.discard.splice(0));
 
   s.discard=[top];
 
 }
 
 
-/* =====================================================
-   LEGALITY
-===================================================== */
+/* ======================================================
+ RULES
+====================================================== */
 
-function isPlayable(
-  card,
-  s
-){
+function isPlayable(card,s){
 
   const top=
-    s.discard[
-      s.discard.length-1
-    ];
+    s.discard[s.discard.length-1];
 
-  if(!top){
-    return true;
-  }
-
-
-  /* Wild */
+  if(!top)return true;
 
   if(
-    card.type==="wild" ||
+    card.type==="wild"||
     card.type==="draw4"
-  ){
+  )return true;
 
+  if(card.color===s.currentColor)
     return true;
 
-  }
-
-
-  /* Same colour */
+  if(
+    card.type==="number"&&
+    top.type==="number"&&
+    card.value===top.value
+  )return true;
 
   if(
-    card.color===
-    s.currentColor
-  ){
-
-    return true;
-
-  }
-
-
-  /* Same number */
-
-  if(
-    card.type==="number" &&
-    top.type==="number" &&
-    card.value===
-    top.value
-  ){
-
-    return true;
-
-  }
-
-
-  /* Same special symbol */
-
-  if(
-    card.type!=="number" &&
+    card.type!=="number"&&
     card.type===top.type
-  ){
-
-    return true;
-
-  }
-
+  )return true;
 
   return false;
 
 }
 
 
-/* =====================================================
-   ILLEGAL MOVE SYSTEM
-===================================================== */
+/* ======================================================
+ TURN
+====================================================== */
 
-function illegalMove(
-  playerIndex
-){
+function nextTurn(){
 
-  const p=
-    state.players[playerIndex];
+  const count=state.players.length;
 
-  if(!p || p.eliminated){
-    return;
+  let n=
+    (state.turn+
+     state.direction+
+     count*10)%count;
+
+  state.turn=n;
+
+  while(
+    state.players[state.turn].eliminated
+  ){
+
+    n=
+      (state.turn+
+       state.direction+
+       count*10)%count;
+
+    state.turn=n;
+
   }
+
+}
+
+
+/* ======================================================
+ ILLEGAL MOVES
+====================================================== */
+
+function illegalMove(index){
+
+  const p=state.players[index];
+
+  if(!p||p.eliminated)return;
 
   p.illegalMoves++;
 
   state.lastMessage=
     p.name+
-    " made an illegal move.";
+    " attempted an illegal move.";
 
   if(
     p.illegalMoves>=MAX_ILLEGAL
   ){
 
     p.eliminated=true;
+    state.loser=index;
 
-    state.loser=playerIndex;
+    findNextPlayer();
 
-    /* Remove player from active turn logic */
+    showResult(
+      index===myPlayerIndex?false:true,
+      p.name+
+      " lost after 3 illegal moves."
+    );
 
-    findNextActivePlayer();
+  }else{
 
-    if(
-      playerIndex===myPlayerIndex
-    ){
+    if(index===myPlayerIndex){
 
-      showResult(
-        false,
-        p.name+
-        " lost after 3 illegal moves."
-      );
+      penaltyMessage.textContent=
+        "❌ Illegal move — Strike "+
+        p.illegalMoves+
+        "/3";
 
-    }else{
-
-      showResult(
-        true,
-        p.name+
-        " lost after 3 illegal moves."
-      );
+      setTimeout(()=>{
+        penaltyMessage.textContent="";
+      },2200);
 
     }
 
-    return;
-
-  }
-
-
-  if(
-    playerIndex===myPlayerIndex
-  ){
-
-    penaltyMessage.textContent=
-      "❌ Illegal move! Strike "+
-      p.illegalMoves+
-      "/3";
-
-    setTimeout(()=>{
-      penaltyMessage.textContent="";
-    },2200);
-
-  }
-
-  renderState();
-
-}
-
-
-function findNextActivePlayer(){
-
-  if(!state) return;
-
-  let attempts=0;
-
-  while(attempts<state.players.length){
-
-    const p=
-      state.players[state.turn];
-
-    if(
-      p &&
-      !p.eliminated
-    ){
-
-      return;
-
-    }
-
-    nextTurnRaw();
-
-    attempts++;
+    renderState();
 
   }
 
 }
 
+function findNextPlayer(){
 
-/* =====================================================
-   TURN
-===================================================== */
-
-function nextTurnRaw(){
-
-  const count=
-    state.players.length;
-
-  let next=
-    state.turn+
-    state.direction;
-
-  next=
-    (
-      next+
-      count*10
-    )%count;
-
-  state.turn=next;
-
-}
-
-
-function nextActiveTurn(){
-
-  nextTurnRaw();
-
-  let safety=0;
+  let tries=0;
 
   while(
-    state.players[state.turn].eliminated &&
-    safety<state.players.length
+    state.players[state.turn].eliminated&&
+    tries<state.players.length
   ){
 
-    nextTurnRaw();
+    nextTurn();
 
-    safety++;
+    tries++;
 
   }
 
 }
 
 
-/* =====================================================
-   PLAY CARD
-===================================================== */
+/* ======================================================
+ PLAY CARD
+====================================================== */
 
 function playCard(
-  playerIndex,
+  index,
   cardIndex,
   chosenColor
 ){
 
-  if(!state || !state.started){
+  const p=state.players[index];
+
+  if(!p||p.eliminated)
     return false;
-  }
 
-  const player=
-    state.players[playerIndex];
+  if(state.turn!==index){
 
-  if(
-    !player ||
-    player.eliminated
-  ){
+    illegalMove(index);
 
     return false;
 
   }
 
-
-  if(
-    state.turn!==playerIndex
-  ){
-
-    illegalMove(playerIndex);
-
-    return false;
-
-  }
-
-
-  const card=
-    player.hand[cardIndex];
-
+  const card=p.hand[cardIndex];
 
   if(!card){
 
-    illegalMove(playerIndex);
+    illegalMove(index);
 
     return false;
 
   }
-
-
-  /*
-    THIS IS THE IMPORTANT PART:
-
-    We do NOT tell the player whether
-    a card is playable.
-
-    They must choose it themselves.
-  */
 
   if(!isPlayable(card,state)){
 
-    illegalMove(playerIndex);
+    illegalMove(index);
 
     return false;
 
   }
 
-
-  /* Remove card */
-
-  player.hand.splice(
-    cardIndex,
-    1
-  );
+  p.hand.splice(cardIndex,1);
 
   state.discard.push(card);
 
-
-  /* Colour */
-
   if(
-    card.type==="wild" ||
+    card.type==="wild"||
     card.type==="draw4"
   ){
 
-    if(
+    state.currentColor=
       COLORS.includes(chosenColor)
-    ){
-
-      state.currentColor=
-        chosenColor;
-
-    }else{
-
-      state.currentColor=
-        randomColor();
-
-    }
+      ?chosenColor
+      :randomColor();
 
   }else{
 
-    state.currentColor=
-      card.color;
+    state.currentColor=card.color;
 
   }
 
-
   state.lastMessage=
-    player.name+
+    p.name+
     " played "+
     card.value;
 
+  if(p.hand.length===0){
 
-  /* WIN */
-
-  if(player.hand.length===0){
-
-    state.winner=
-      playerIndex;
+    state.winner=index;
 
     showResult(
-      playerIndex===myPlayerIndex,
-      player.name+" wins!"
+      index===myPlayerIndex,
+      p.name+" wins!"
     );
 
     return true;
 
   }
 
-
-  /* Special effects */
-
-  if(
-    card.type==="skip"
-  ){
-
-    nextActiveTurn();
-    nextActiveTurn();
-
-    finishAction();
-
-    return true;
-
-  }
-
-
-  if(
-    card.type==="reverse"
-  ){
+  if(card.type==="reverse"){
 
     if(
       state.players.filter(
-        p=>!p.eliminated
+        x=>!x.eliminated
       ).length>2
     ){
 
@@ -1818,96 +1820,40 @@ function playCard(
 
     }
 
-    nextActiveTurn();
+    nextTurn();
 
-    finishAction();
+  }else if(card.type==="skip"){
 
-    return true;
+    nextTurn();
+    nextTurn();
 
-  }
-
-
-  if(
-    card.type==="draw2"
-  ){
-
-    nextActiveTurn();
-
-    forceDraw(
-      state.turn,
-      2
-    );
-
-    nextActiveTurn();
-
-    finishAction();
-
-    return true;
-
-  }
-
-
-  if(
-    card.type==="draw4"
-  ){
-
-    nextActiveTurn();
-
-    forceDraw(
-      state.turn,
-      4
-    );
-
-    nextActiveTurn();
-
-    finishAction();
-
-    return true;
-
-  }
-
-
-  if(
-    card.type==="draw6"
-  ){
-
-    nextActiveTurn();
-
-    forceDraw(
-      state.turn,
-      6
-    );
-
-    nextActiveTurn();
-
-    finishAction();
-
-    return true;
-
-  }
-
-
-  if(
+  }else if(
+    card.type==="draw2"||
+    card.type==="draw4"||
+    card.type==="draw6"||
     card.type==="draw10"
   ){
 
-    nextActiveTurn();
+    nextTurn();
+
+    let amount=2;
+
+    if(card.type==="draw4")amount=4;
+    if(card.type==="draw6")amount=6;
+    if(card.type==="draw10")amount=10;
 
     forceDraw(
       state.turn,
-      10
+      amount
     );
 
-    nextActiveTurn();
+    nextTurn();
 
-    finishAction();
+  }else{
 
-    return true;
+    nextTurn();
 
   }
-
-
-  nextActiveTurn();
 
   finishAction();
 
@@ -1915,86 +1861,127 @@ function playCard(
 
 }
 
+function forceDraw(index,amount){
 
-function forceDraw(
-  playerIndex,
-  amount
-){
+  const p=state.players[index];
+
+  if(!p||p.eliminated)return;
+
+  for(let i=0;i<amount;i++)
+    drawFromDeck(state,p);
+
+}
+
+
+/* ======================================================
+ HUMAN
+====================================================== */
+
+function userPlayCard(index){
+
+  if(!state)return;
+
+  if(state.turn!==myPlayerIndex)
+    return;
 
   const p=
-    state.players[playerIndex];
+    state.players[myPlayerIndex];
 
-  if(!p || p.eliminated){
-    return;
-  }
+  if(!p||p.eliminated)return;
 
-  for(
-    let i=0;
-    i<amount;
-    i++
-  ){
+  const card=p.hand[index];
 
-    drawFromDeck(
-      state,
-      p
-    );
+  if(!card)return;
 
-  }
-
-}
-
-
-/* =====================================================
-   FINISH ACTION
-===================================================== */
-
-function finishAction(){
-
-  renderState();
-
-  if(mode==="online" && isHost){
-
-    broadcastState();
-
-  }
+  /*
+    IMPORTANT:
+    We intentionally do NOT check whether
+    the card is legal here.
+  */
 
   if(
-    mode==="bots" &&
-    state.winner===null &&
-    state.loser===null
+    card.type==="wild"||
+    card.type==="draw4"
   ){
 
-    botLoop();
+    pendingCardIndex=index;
+
+    colorOverlay.classList.remove("hidden");
+
+    return;
 
   }
 
+  sendPlay(index,null);
+
 }
 
+function sendPlay(index,color){
 
-/* =====================================================
-   DRAW ACTION
-===================================================== */
+  if(
+    mode==="online"&&
+    !isHost
+  ){
+
+    if(
+      hostConnection&&
+      hostConnection.open
+    ){
+
+      hostConnection.send({
+        type:"ACTION",
+        action:{
+          type:"play",
+          index,
+          color
+        }
+      });
+
+    }
+
+    return;
+
+  }
+
+  playCard(
+    myPlayerIndex,
+    index,
+    color
+  );
+
+}
+
+window.chooseColor=function(color){
+
+  colorOverlay.classList.add("hidden");
+
+  const i=pendingCardIndex;
+
+  pendingCardIndex=null;
+
+  sendPlay(i,color);
+
+};
+
+
+/* ======================================================
+ DRAW
+====================================================== */
 
 window.drawCard=function(){
 
-  if(!state || !state.started){
-    return;
-  }
+  if(!state)return;
 
+  if(state.turn!==myPlayerIndex)
+    return;
 
   if(
-    state.turn!==myPlayerIndex
+    mode==="online"&&
+    !isHost
   ){
 
-    return;
-
-  }
-
-
-  if(mode==="online" && !isHost){
-
     if(
-      hostConnection &&
+      hostConnection&&
       hostConnection.open
     ){
 
@@ -2011,196 +1998,36 @@ window.drawCard=function(){
 
   }
 
+  const p=
+    state.players[myPlayerIndex];
 
-  const player=
-    state.players[
-      myPlayerIndex
-    ];
-
-
-  if(!player || player.eliminated){
-    return;
-  }
-
-
-  drawFromDeck(
-    state,
-    player
-  );
-
+  drawFromDeck(state,p);
 
   state.lastMessage=
-    player.name+
-    " drew a card.";
+    p.name+" drew a card.";
 
-
-  nextActiveTurn();
+  nextTurn();
 
   finishAction();
 
 };
 
 
-/* =====================================================
-   HUMAN PLAY
-===================================================== */
+/* ======================================================
+ BOT MODE
+====================================================== */
 
-function userPlayCard(index){
-
-  if(!state) return;
-
-  if(
-    state.turn!==myPlayerIndex
-  ){
-
-    return;
-
-  }
-
-
-  const player=
-    state.players[
-      myPlayerIndex
-    ];
-
-
-  if(
-    !player ||
-    player.eliminated
-  ){
-
-    return;
-
-  }
-
-
-  const card=
-    player.hand[index];
-
-
-  if(!card){
-    return;
-  }
-
-
-  /*
-    DO NOT CHECK PLAYABILITY HERE.
-
-    The player is allowed to attempt
-    an illegal move.
-
-    The game will give them a strike.
-  */
-
-
-  if(
-    card.type==="wild" ||
-    card.type==="draw4"
-  ){
-
-    pendingCardIndex=index;
-
-    colorOverlay.classList.remove(
-      "hidden"
-    );
-
-    return;
-
-  }
-
-
-  sendHumanPlay(
-    index,
-    null
-  );
-
-}
-
-
-function sendHumanPlay(
-  index,
-  color
-){
-
-  if(mode==="online" && !isHost){
-
-    if(
-      hostConnection &&
-      hostConnection.open
-    ){
-
-      hostConnection.send({
-
-        type:"ACTION",
-
-        action:{
-          type:"play",
-          index:index,
-          color:color
-        }
-
-      });
-
-    }
-
-    return;
-
-  }
-
-
-  playCard(
-    myPlayerIndex,
-    index,
-    color
-  );
-
-}
-
-
-window.chooseColor=function(color){
-
-  colorOverlay.classList.add(
-    "hidden"
-  );
-
-  const index=
-    pendingCardIndex;
-
-  pendingCardIndex=null;
-
-  sendHumanPlay(
-    index,
-    color
-  );
-
-};
-
-
-/* =====================================================
-   BOT MODE
-===================================================== */
-
-window.startBots=function(
-  botCount
-){
+window.startBots=function(count){
 
   saveName();
 
   mode="bots";
 
   const players=[
-    makePlayer(
-      playerName,
-      false
-    )
+    makePlayer(playerName,false)
   ];
 
-
-  for(
-    let i=0;
-    i<botCount;
-    i++
-  ){
+  for(let i=0;i<count;i++){
 
     players.push(
       makePlayer(
@@ -2211,13 +2038,11 @@ window.startBots=function(
 
   }
 
-
-  state=
-    createGame(players);
+  state=createGame(players);
 
   myPlayerIndex=0;
 
-  startGameScreen();
+  startGame();
 
   renderState();
 
@@ -2227,77 +2052,48 @@ window.startBots=function(
 
 
 /*
-  BOTS PLAY COMPLETELY ON THEIR OWN.
+  Bots automatically make every move.
 */
 
 function botLoop(){
 
-  if(mode!=="bots"){
-    return;
-  }
+  if(mode!=="bots")return;
 
   if(
-    !state ||
-    state.winner!==null ||
+    !state||
+    state.winner!==null||
     state.loser!==null
-  ){
-
-    return;
-
-  }
-
+  )return;
 
   const bot=
-    state.players[
-      state.turn
-    ];
-
+    state.players[state.turn];
 
   if(
-    !bot ||
-    !bot.bot ||
+    !bot||
+    !bot.bot||
     bot.eliminated
-  ){
-
-    return;
-
-  }
+  )return;
 
 
   setTimeout(()=>{
 
     if(
-      !state ||
-      state.winner!==null ||
+      !state||
+      state.winner!==null||
       state.loser!==null
-    ){
-
-      return;
-
-    }
+    )return;
 
 
-    /*
-      Find legal cards.
-
-      Bots know the rules internally,
-      but the human player does not get
-      any visual hints.
-    */
-
-    const playable=[];
+    const legal=[];
 
     bot.hand.forEach(
       (card,index)=>{
 
         if(
-          isPlayable(
-            card,
-            state
-          )
+          isPlayable(card,state)
         ){
 
-          playable.push({
+          legal.push({
             card,
             index
           });
@@ -2308,18 +2104,14 @@ function botLoop(){
     );
 
 
-    if(playable.length===0){
+    if(legal.length===0){
 
-      drawFromDeck(
-        state,
-        bot
-      );
+      drawFromDeck(state,bot);
 
       state.lastMessage=
-        bot.name+
-        " drew a card.";
+        bot.name+" drew a card.";
 
-      nextActiveTurn();
+      nextTurn();
 
       finishAction();
 
@@ -2328,58 +2120,42 @@ function botLoop(){
     }
 
 
-    /*
-      Bot strategy:
-
-      Prefer high-value cards first.
-      Avoid wasting wilds unless necessary.
-    */
-
-    playable.sort(
+    legal.sort(
       (a,b)=>
-        cardAIValue(b.card)-
-        cardAIValue(a.card)
+        botCardValue(b.card)-
+        botCardValue(a.card)
     );
 
 
     let choice;
 
-
-    /*
-      Occasionally make the bot less
-      predictable.
-    */
-
     if(
-      Math.random()<0.22 &&
-      playable.length>1
+      Math.random()<.2&&
+      legal.length>1
     ){
 
       choice=
-        playable[
+        legal[
           Math.floor(
-            Math.random()*
-            playable.length
+            Math.random()*legal.length
           )
         ];
 
     }else{
 
-      choice=playable[0];
+      choice=legal[0];
 
     }
 
 
     let color=null;
 
-
     if(
-      choice.card.type==="wild" ||
+      choice.card.type==="wild"||
       choice.card.type==="draw4"
     ){
 
-      color=
-        chooseBotColor(bot);
+      color=bestBotColor(bot);
 
     }
 
@@ -2390,80 +2166,57 @@ function botLoop(){
       color
     );
 
-
   },850);
 
 }
 
+function botCardValue(c){
 
-function cardAIValue(card){
+  if(c.type==="draw10")return 100;
+  if(c.type==="draw6")return 85;
+  if(c.type==="draw4")return 75;
+  if(c.type==="draw2")return 50;
+  if(c.type==="skip")return 38;
+  if(c.type==="reverse")return 32;
+  if(c.type==="wild")return 27;
 
-  if(card.type==="draw10") return 100;
-  if(card.type==="draw6") return 80;
-  if(card.type==="draw4") return 70;
-  if(card.type==="draw2") return 45;
-  if(card.type==="skip") return 35;
-  if(card.type==="reverse") return 30;
-  if(card.type==="wild") return 25;
-
-  return Number(card.value)||0;
+  return Number(c.value)||0;
 
 }
 
+function bestBotColor(bot){
 
-function chooseBotColor(
-  bot
-){
-
-  const counts={
+  const count={
     red:0,
     blue:0,
     green:0,
     yellow:0
   };
 
+  bot.hand.forEach(c=>{
 
-  bot.hand.forEach(
-    card=>{
+    if(count[c.color]!==undefined)
+      count[c.color]++;
 
-      if(
-        counts[card.color]!==undefined
-      ){
-
-        counts[card.color]++;
-
-      }
-
-    }
-  );
-
+  });
 
   let best="red";
 
-  COLORS.forEach(
-    color=>{
+  COLORS.forEach(c=>{
 
-      if(
-        counts[color]>
-        counts[best]
-      ){
+    if(count[c]>count[best])
+      best=c;
 
-        best=color;
-
-      }
-
-    }
-  );
-
+  });
 
   return best;
 
 }
 
 
-/* =====================================================
-   LOCAL PLAY
-===================================================== */
+/* ======================================================
+ LOCAL
+====================================================== */
 
 window.startLocal=function(){
 
@@ -2472,37 +2225,21 @@ window.startLocal=function(){
   mode="local";
 
   const players=[
-    makePlayer(
-      playerName,
-      false
-    )
+    makePlayer(playerName,false)
   ];
 
-
-  const names=[
+  [
     document.getElementById("local2").value.trim(),
     document.getElementById("local3").value.trim(),
     document.getElementById("local4").value.trim()
-  ];
+  ].forEach(name=>{
 
+    if(name)
+      players.push(
+        makePlayer(name,false)
+      );
 
-  names.forEach(
-    name=>{
-
-      if(name){
-
-        players.push(
-          makePlayer(
-            name,
-            false
-          )
-        );
-
-      }
-
-    }
-  );
-
+  });
 
   if(players.length<2){
 
@@ -2514,85 +2251,54 @@ window.startLocal=function(){
 
   }
 
-
-  state=
-    createGame(players);
+  state=createGame(players);
 
   myPlayerIndex=0;
 
-  startGameScreen();
+  startGame();
 
   renderState();
 
 };
 
 
-/* =====================================================
-   GAME RENDERING
-===================================================== */
+/* ======================================================
+ RENDER
+====================================================== */
 
-function startGameScreen(){
+function startGame(){
 
   hideAll();
 
-  game.classList.remove(
-    "hidden"
-  );
+  game.classList.remove("hidden");
 
 }
 
-
 function renderState(){
 
-  if(!state){
-    return;
-  }
-
+  if(!state)return;
 
   renderPlayers();
-
   renderDiscard();
-
   renderHand();
 
-
   deckInfo.textContent=
-    "Deck: "+
-    state.deck.length;
-
+    "Deck: "+state.deck.length;
 
   const current=
-    state.players[
-      state.turn
-    ];
-
+    state.players[state.turn];
 
   if(current){
 
-    if(
-      state.turn===
-      myPlayerIndex
-    ){
-
-      turnLabel.textContent=
-        "YOUR TURN";
-
-    }else{
-
-      turnLabel.textContent=
-        current.name+
-        "'s turn";
-
-    }
+    turnLabel.textContent=
+      state.turn===myPlayerIndex
+      ?"YOUR TURN"
+      :current.name+"'s turn";
 
   }
 
-
   const me=
-    state.players[
-      myPlayerIndex
-    ];
-
+    state.players[myPlayerIndex];
 
   if(me){
 
@@ -2605,93 +2311,65 @@ function renderState(){
 
 }
 
-
 function renderPlayers(){
 
   playersArea.innerHTML="";
 
+  state.players.forEach((p,i)=>{
 
-  state.players.forEach(
-    (p,index)=>{
+    const el=
+      document.createElement("div");
 
-      const seat=
-        document.createElement(
-          "div"
-        );
-
-
-      seat.className=
-        "player-seat"+
-        (
-          state.turn===index
-            ? " active"
-            : ""
-        )+
-        (
-          p.eliminated
-            ? " lost"
-            : ""
-        );
-
-
-      seat.innerHTML=`
-
-        <div class="seat-name">
-
-          ${
-            index===0
-              ? "👑 "
-              : ""
-          }
-
-          ${escapeHTML(p.name)}
-
-          ${
-            p.bot
-              ? " 🤖"
-              : ""
-          }
-
-          ${
-            p.eliminated
-              ? " ☠️"
-              : ""
-          }
-
-        </div>
-
-        <div class="seat-count">
-
-          ${
-            p.eliminated
-              ? "ELIMINATED"
-              : p.hand.length+
-                " cards"
-          }
-
-          ${
-            p.illegalMoves>0 &&
-            !p.eliminated
-              ? " • ⚠️ "+
-                p.illegalMoves+
-                "/3"
-              : ""
-          }
-
-        </div>
-
-      `;
-
-
-      playersArea.appendChild(
-        seat
+    el.className=
+      "player-seat"+
+      (
+        state.turn===i
+        ?" active"
+        :""
+      )+
+      (
+        p.eliminated
+        ?" lost"
+        :""
       );
 
-    }
-  );
+    el.innerHTML=`
+
+      <div class="seat-name">
+
+        ${i===0?"👑 ":""}
+
+        ${escapeHTML(p.name)}
+
+        ${p.bot?" 🤖":""}
+
+        ${p.eliminated?" ☠️":""}
+
+      </div>
+
+      <div class="seat-count">
+
+        ${
+          p.eliminated
+          ?"ELIMINATED"
+          :p.hand.length+" cards"
+        }
+
+        ${
+          p.illegalMoves>0&&!p.eliminated
+          ?" • ⚠️ "+p.illegalMoves+"/3"
+          :""
+        }
+
+      </div>
+
+    `;
+
+    playersArea.appendChild(el);
+
+  });
 
 }
-
 
 function renderDiscard(){
 
@@ -2700,189 +2378,267 @@ function renderDiscard(){
       state.discard.length-1
     ];
 
-
   if(!card){
 
-    discardPile.className=
-      "pile";
-
+    discardPile.className="pile";
     discardPile.textContent="?";
-
     return;
 
   }
 
+  let c=card.color;
 
-  let colorClass=
-    card.color;
-
-
-  if(
-    card.color==="green"
-  ){
-
-    colorClass="green-card";
-
-  }
-
+  if(c==="green")
+    c="green-card";
 
   discardPile.className=
-    "pile card "+
-    colorClass;
-
+    "pile card "+c;
 
   discardPile.innerHTML=
     `<span>${card.value}</span>`;
 
 }
 
-
 function renderHand(){
 
   myCards.innerHTML="";
 
-
   const me=
-    state.players[
-      myPlayerIndex
-    ];
+    state.players[myPlayerIndex];
+
+  if(!me)return;
+
+  me.hand.forEach((card,index)=>{
+
+    const el=
+      document.createElement("div");
+
+    let c=card.color;
+
+    if(c==="green")
+      c="green-card";
+
+    el.className=
+      "card "+c+" clickable";
+
+    el.innerHTML=`
+
+      <span class="corner">
+        ${card.value}
+      </span>
+
+      <span class="symbol">
+        ${symbolFor(card)}
+      </span>
+
+      <span
+        class="corner"
+        style="text-align:right">
+        ${card.value}
+      </span>
+
+    `;
+
+    el.onclick=
+      ()=>userPlayCard(index);
+
+    myCards.appendChild(el);
+
+  });
+
+}
+
+function symbolFor(c){
+
+  if(c.type==="skip")return"⊘";
+  if(c.type==="reverse")return"↻";
+  if(c.type==="draw2")return"+2";
+  if(c.type==="draw4")return"+4";
+  if(c.type==="draw6")return"+6";
+  if(c.type==="draw10")return"+10";
+  if(c.type==="wild")return"★";
+
+  return c.value;
+
+}
 
 
-  if(!me){
-    return;
+/* ======================================================
+ FINISH
+====================================================== */
+
+function finishAction(){
+
+  renderState();
+
+  if(
+    mode==="online"&&
+    isHost
+  ){
+
+    broadcastState();
+
   }
 
+  if(
+    mode==="bots"&&
+    state.winner===null&&
+    state.loser===null
+  ){
 
-  me.hand.forEach(
-    (card,index)=>{
+    botLoop();
 
-      const el=
-        document.createElement(
-          "div"
-        );
+  }
 
-
-      let colorClass=
-        card.color;
-
-
-      if(
-        card.color==="green"
-      ){
-
-        colorClass=
-          "green-card";
-
-      }
+}
 
 
-      el.className=
-        "card "+
-        colorClass+
-        " clickable";
+/* ======================================================
+ RESULTS
+====================================================== */
 
+function showResult(won,message){
 
-      /*
-        IMPORTANT:
-        There is deliberately NO
-        playable/disabled class here.
-      */
+  if(
+    state.loser!==null
+  ){
 
+    resultIcon.textContent="☠️";
 
-      el.innerHTML=`
+    resultTitle.textContent=
+      "PLAYER ELIMINATED";
 
-        <span class="corner">
-          ${card.value}
-        </span>
+    winnerName.textContent=
+      message;
 
-        <span class="symbol">
-          ${symbolFor(card)}
-        </span>
+  }else{
 
-        <span
-          class="corner"
-          style="text-align:right">
-          ${card.value}
-        </span>
+    resultIcon.textContent=
+      won?"🏆":"😔";
 
-      `;
+    resultTitle.textContent=
+      won?"YOU WIN!":"GAME OVER";
 
+    winnerName.textContent=
+      message;
 
-      el.onclick=
-        ()=>userPlayCard(index);
+  }
 
-
-      myCards.appendChild(el);
-
-    }
+  winnerOverlay.classList.remove(
+    "hidden"
   );
 
-}
+  if(
+    mode==="online"&&
+    isHost
+  ){
 
-
-function symbolFor(card){
-
-  switch(card.type){
-
-    case "skip":
-      return "⊘";
-
-    case "reverse":
-      return "↻";
-
-    case "draw2":
-      return "+2";
-
-    case "draw4":
-      return "+4";
-
-    case "draw6":
-      return "+6";
-
-    case "draw10":
-      return "+10";
-
-    case "wild":
-      return "★";
-
-    default:
-      return card.value;
+    broadcastState();
 
   }
 
 }
 
 
-/* =====================================================
-   ONLINE PEERJS
-===================================================== */
+/* ======================================================
+ RESTART
+====================================================== */
+
+window.restartCurrentGame=function(){
+
+  winnerOverlay.classList.add("hidden");
+
+  if(mode==="bots"){
+
+    const players=
+      state.players.map(
+        p=>makePlayer(p.name,p.bot)
+      );
+
+    state=createGame(players);
+
+    myPlayerIndex=0;
+
+    renderState();
+
+    botLoop();
+
+    return;
+
+  }
+
+  if(mode==="local"){
+
+    const players=
+      state.players.map(
+        p=>makePlayer(p.name,false)
+      );
+
+    state=createGame(players);
+
+    myPlayerIndex=0;
+
+    renderState();
+
+    return;
+
+  }
+
+  if(mode==="online"){
+
+    if(!isHost){
+
+      alert(
+        "Only the host can restart."
+      );
+
+      return;
+
+    }
+
+    state=createGame(
+      state.players.map(p=>{
+
+        const x=
+          makePlayer(p.name,p.bot);
+
+        x.connected=p.connected;
+
+        return x;
+
+      })
+    );
+
+    broadcastState();
+
+  }
+
+};
+
+
+/* ======================================================
+ PEERJS ONLINE
+====================================================== */
 
 window.createLobby=function(){
 
   saveName();
 
   isHost=true;
-
   mode="online";
 
   onlineStatus.textContent=
     "Creating lobby...";
 
+  roomCode=randomCode(4);
 
-  roomCode=
-    randomCode(4);
-
-
-  const peerID=
-    "qpg-"+roomCode;
-
+  const id="qpg-"+roomCode;
 
   try{
 
-    peer=
-      new Peer(peerID);
+    peer=new Peer(id);
 
-  }catch(error){
+  }catch(e){
 
     onlineStatus.textContent=
       "PeerJS could not start.";
@@ -2891,254 +2647,155 @@ window.createLobby=function(){
 
   }
 
+  peer.on("open",()=>{
 
-  peer.on(
-    "open",
-    function(){
+    myPlayerIndex=0;
 
-      myPlayerIndex=0;
+    state={
+      players:[
+        makePlayer(playerName,false)
+      ],
+      deck:[],
+      discard:[],
+      turn:0,
+      direction:1,
+      currentColor:null,
+      winner:null,
+      loser:null,
+      started:false,
+      lastMessage:""
+    };
 
-      state={
+    hideAll();
 
-        players:[
-          makePlayer(
-            playerName,
-            false
-          )
-        ],
+    lobbyPanel.classList.remove(
+      "hidden"
+    );
 
-        deck:[],
-        discard:[],
-        turn:0,
-        direction:1,
-        currentColor:null,
-        winner:null,
-        loser:null,
-        started:false,
-        lastMessage:""
+    hostCode.textContent=roomCode;
 
-      };
+    renderLobby();
 
+    lobbyStatus.textContent=
+      "Waiting for players...";
 
-      hideAll();
+  });
 
-      lobbyPanel.classList.remove(
-        "hidden"
-      );
+  peer.on("connection",conn=>{
+    setupConnection(conn);
+  });
 
+  peer.on("error",err=>{
 
-      hostCode.textContent=
-        roomCode;
+    console.error(err);
 
-
-      renderLobby();
-
-
-      lobbyStatus.textContent=
-        "Waiting for players...";
-
-    }
-  );
-
-
-  peer.on(
-    "connection",
-    function(conn){
-
-      setupIncomingConnection(
-        conn
-      );
-
-    }
-  );
-
-
-  peer.on(
-    "error",
-    function(error){
-
-      console.error(error);
-
-      if(
-        error.type===
-        "unavailable-id"
-      ){
-
-        onlineStatus.textContent=
-          "Room code already exists. Try again.";
-
-        try{
-          peer.destroy();
-        }catch(e){}
-
-        return;
-
-      }
-
+    if(
+      err.type==="unavailable-id"
+    ){
 
       onlineStatus.textContent=
-        "PeerJS error: "+
-        error.type;
+        "That code was already taken. Try again.";
+
+      try{
+        peer.destroy();
+      }catch(e){}
+
+      return;
 
     }
-  );
+
+    onlineStatus.textContent=
+      "PeerJS error: "+err.type;
+
+  });
 
 };
 
 
-function setupIncomingConnection(
-  conn
-){
+function setupConnection(conn){
 
-  conn.on(
-    "open",
-    function(){
+  conn.on("open",()=>{
+
+    if(
+      state.players.length>=MAX_PLAYERS
+    ){
+
+      conn.send({type:"FULL"});
+      conn.close();
+      return;
+
+    }
+
+    connections[conn.peer]=conn;
+
+    const index=
+      state.players.length;
+
+    state.players.push(
+      makePlayer(
+        "Player "+(index+1),
+        false
+      )
+    );
+
+    conn.playerIndex=index;
+
+    conn.send({
+      type:"ASSIGN",
+      index,
+      room:roomCode
+    });
+
+    conn.send({
+      type:"LOBBY",
+      players:lobbyData()
+    });
+
+    broadcastLobby();
+
+    conn.on("data",data=>{
+      handleClientMessage(conn,data);
+    });
+
+    conn.on("close",()=>{
 
       if(
-        state.players.length>=
-        MAX_PLAYERS
+        conn.playerIndex!==undefined
       ){
 
-        conn.send({
-          type:"FULL"
-        });
+        const p=
+          state.players[
+            conn.playerIndex
+          ];
 
-        conn.close();
-
-        return;
+        if(p)
+          p.connected=false;
 
       }
 
-
-      connections[
-        conn.peer
-      ]=conn;
-
-
-      const playerIndex=
-        state.players.length;
-
-
-      state.players.push(
-        makePlayer(
-          "Player "+
-          (playerIndex+1),
-          false
-        )
-      );
-
-
-      conn.playerIndex=
-        playerIndex;
-
-
-      conn.send({
-
-        type:"ASSIGN",
-
-        index:playerIndex,
-
-        room:roomCode
-
-      });
-
-
-      conn.send({
-
-        type:"LOBBY",
-
-        players:
-          lobbyData()
-
-      });
-
+      delete connections[conn.peer];
 
       broadcastLobby();
 
+    });
 
-      conn.on(
-        "data",
-        function(data){
-
-          handleClientMessage(
-            conn,
-            data
-          );
-
-        }
-      );
-
-
-      conn.on(
-        "close",
-        function(){
-
-          if(
-            conn.playerIndex!==undefined
-          ){
-
-            const p=
-              state.players[
-                conn.playerIndex
-              ];
-
-            if(p){
-              p.connected=false;
-            }
-
-          }
-
-
-          delete connections[
-            conn.peer
-          ];
-
-
-          broadcastLobby();
-
-        }
-      );
-
-    }
-  );
+  });
 
 }
 
+function handleClientMessage(conn,data){
 
-function handleClientMessage(
-  conn,
-  data
-){
+  if(!data)return;
 
-  if(
-    !data ||
-    !data.type
-  ){
+  if(data.type==="NAME"){
 
-    return;
+    const i=conn.playerIndex;
 
-  }
+    if(i===undefined)return;
 
-
-  if(
-    data.type==="NAME"
-  ){
-
-    const index=
-      conn.playerIndex;
-
-
-    if(index===undefined){
-      return;
-    }
-
-
-    state.players[index].name=
-      String(
-        data.name||
-        "Player"
-      ).slice(0,16);
-
+    state.players[i].name=
+      String(data.name||"Player")
+      .slice(0,16);
 
     broadcastLobby();
 
@@ -3146,20 +2803,7 @@ function handleClientMessage(
 
   }
 
-
-  if(
-    data.type==="ACTION"
-  ){
-
-    if(
-      conn.playerIndex===
-      undefined
-    ){
-
-      return;
-
-    }
-
+  if(data.type==="ACTION"){
 
     handleHostAction(
       conn.playerIndex,
@@ -3170,53 +2814,29 @@ function handleClientMessage(
 
 }
 
-
-/* =====================================================
-   HOST ACTION
-===================================================== */
-
-function handleHostAction(
-  playerIndex,
-  action
-){
+function handleHostAction(index,action){
 
   if(
-    !state ||
-    !state.started ||
+    !state||
+    !state.started||
     !action
-  ){
+  )return;
 
-    return;
-
-  }
-
-
-  if(
-    action.type==="play"
-  ){
+  if(action.type==="play"){
 
     playCard(
-      playerIndex,
+      index,
       action.index,
       action.color
     );
 
-    return;
-
   }
 
+  if(action.type==="draw"){
 
-  if(
-    action.type==="draw"
-  ){
+    if(state.turn!==index){
 
-    if(
-      state.turn!==playerIndex
-    ){
-
-      illegalMove(
-        playerIndex
-      );
+      illegalMove(index);
 
       broadcastState();
 
@@ -3224,25 +2844,14 @@ function handleHostAction(
 
     }
 
+    const p=state.players[index];
 
-    const p=
-      state.players[
-        playerIndex
-      ];
-
-
-    drawFromDeck(
-      state,
-      p
-    );
-
+    drawFromDeck(state,p);
 
     state.lastMessage=
-      p.name+
-      " drew a card.";
+      p.name+" drew a card.";
 
-
-    nextActiveTurn();
+    nextTurn();
 
     broadcastState();
 
@@ -3251,373 +2860,102 @@ function handleHostAction(
 }
 
 
-/* =====================================================
-   JOIN
-===================================================== */
-
-window.joinLobby=function(){
-
-  saveName();
-
-  const input=
-    document.getElementById(
-      "joinCode"
-    );
-
-
-  const code=
-    input.value
-      .trim()
-      .toUpperCase();
-
-
-  if(
-    !/^[A-Z0-9]{4}$/.test(code)
-  ){
-
-    onlineStatus.textContent=
-      "Enter a valid 4-character code.";
-
-    return;
-
-  }
-
-
-  mode="online";
-
-  isHost=false;
-
-  roomCode=code;
-
-
-  onlineStatus.textContent=
-    "Connecting...";
-
-
-  peer=
-    new Peer();
-
-
-  peer.on(
-    "open",
-    function(){
-
-      const hostID=
-        "qpg-"+code;
-
-
-      hostConnection=
-        peer.connect(
-          hostID,
-          {
-            reliable:true
-          }
-        );
-
-
-      hostConnection.on(
-        "open",
-        function(){
-
-          hostConnection.send({
-
-            type:"NAME",
-
-            name:playerName
-
-          });
-
-
-          hideAll();
-
-          lobbyPanel.classList.remove(
-            "hidden"
-          );
-
-
-          hostCode.textContent=
-            code;
-
-
-          document
-            .getElementById(
-              "hostControls"
-            )
-            .classList.add(
-              "hidden"
-            );
-
-
-          lobbyStatus.textContent=
-            "Connected to host.";
-
-        }
-      );
-
-
-      hostConnection.on(
-        "data",
-        function(data){
-
-          handleHostMessage(
-            data
-          );
-
-        }
-      );
-
-
-      hostConnection.on(
-        "close",
-        function(){
-
-          alert(
-            "The host disconnected."
-          );
-
-          goHome();
-
-        }
-      );
-
-
-      hostConnection.on(
-        "error",
-        function(){
-
-          onlineStatus.textContent=
-            "Could not connect.";
-
-        }
-      );
-
-    }
-  );
-
-
-  peer.on(
-    "error",
-    function(error){
-
-      console.error(error);
-
-      onlineStatus.textContent=
-        "Could not join lobby.";
-
-    }
-  );
-
-};
-
-
-function handleHostMessage(
-  data
-){
-
-  if(!data){
-    return;
-  }
-
-
-  if(
-    data.type==="FULL"
-  ){
-
-    alert(
-      "This lobby is full."
-    );
-
-    goHome();
-
-    return;
-
-  }
-
-
-  if(
-    data.type==="ASSIGN"
-  ){
-
-    myPlayerIndex=
-      data.index;
-
-    return;
-
-  }
-
-
-  if(
-    data.type==="LOBBY"
-  ){
-
-    renderRemoteLobby(
-      data.players
-    );
-
-    return;
-
-  }
-
-
-  if(
-    data.type==="STATE"
-  ){
-
-    state=
-      data.state;
-
-
-    startGameScreen();
-
-    renderState();
-
-    return;
-
-  }
-
-}
-
-
-/* =====================================================
-   LOBBY
-===================================================== */
+/* ======================================================
+ LOBBY
+====================================================== */
 
 function lobbyData(){
 
-  return state.players.map(
-    p=>({
-
-      name:p.name,
-
-      bot:p.bot,
-
-      connected:p.connected
-
-    })
-  );
+  return state.players.map(p=>({
+    name:p.name,
+    bot:p.bot,
+    connected:p.connected
+  }));
 
 }
-
 
 function renderLobby(){
 
   lobbyPlayers.innerHTML="";
 
+  state.players.forEach((p,i)=>{
 
-  state.players.forEach(
-    (p,index)=>{
+    const row=
+      document.createElement("div");
 
-      const row=
-        document.createElement(
-          "div"
-        );
+    row.className="player-row";
 
+    row.innerHTML=`
 
-      row.className=
-        "player-row";
+      <span>
+        ${i===0?"👑 ":""}
+        ${escapeHTML(p.name)}
+      </span>
 
+      <span>
+        ${i===0?"HOST":"READY"}
+      </span>
 
-      row.innerHTML=`
+    `;
 
-        <span>
+    lobbyPlayers.appendChild(row);
 
-          ${
-            index===0
-              ? "👑 "
-              : ""
-          }
-
-          ${escapeHTML(p.name)}
-
-        </span>
-
-        <span>
-
-          ${
-            index===0
-              ? "Host"
-              : "Joined"
-          }
-
-        </span>
-
-      `;
-
-
-      lobbyPlayers.appendChild(
-        row
-      );
-
-    }
-  );
+  });
 
 }
 
-
-function renderRemoteLobby(
-  players
-){
+function renderRemoteLobby(players){
 
   lobbyPlayers.innerHTML="";
 
+  players.forEach((p,i)=>{
 
-  players.forEach(
-    (p,index)=>{
+    const row=
+      document.createElement("div");
 
-      const row=
-        document.createElement(
-          "div"
-        );
+    row.className="player-row";
 
+    row.innerHTML=`
 
-      row.className=
-        "player-row";
+      <span>
+        ${i===0?"👑 ":""}
+        ${escapeHTML(p.name)}
+      </span>
 
+      <span>
+        ${i===0?"HOST":"JOINED"}
+      </span>
 
-      row.innerHTML=`
+    `;
 
-        <span>
+    lobbyPlayers.appendChild(row);
 
-          ${
-            index===0
-              ? "👑 "
-              : ""
-          }
-
-          ${escapeHTML(p.name)}
-
-        </span>
-
-        <span>
-
-          ${
-            index===0
-              ? "Host"
-              : "Joined"
-          }
-
-        </span>
-
-      `;
-
-
-      lobbyPlayers.appendChild(
-        row
-      );
-
-    }
-  );
+  });
 
 }
 
+function broadcastLobby(){
 
-window.hostStartGame=
-function(){
+  renderLobby();
 
-  if(!isHost){
-    return;
-  }
+  const msg={
+    type:"LOBBY",
+    players:lobbyData()
+  };
 
+  Object.values(connections)
+    .forEach(conn=>{
+
+      if(conn.open)
+        conn.send(msg);
+
+    });
+
+}
+
+window.hostStartGame=function(){
+
+  if(!isHost)return;
 
   if(
     state.players.length<2
@@ -3631,315 +2969,195 @@ function(){
 
   }
 
-
-  const players=
-    state.players;
-
-
-  state=
-    createGame(players);
-
+  state=createGame(
+    state.players
+  );
 
   broadcastState();
 
 };
 
-
-function broadcastLobby(){
-
-  if(!state){
-    return;
-  }
-
-
-  renderLobby();
-
-
-  const message={
-
-    type:"LOBBY",
-
-    players:
-      lobbyData()
-
-  };
-
-
-  Object.values(
-    connections
-  ).forEach(
-    conn=>{
-
-      if(conn.open){
-
-        conn.send(
-          message
-        );
-
-      }
-
-    }
-  );
-
-}
-
-
 function broadcastState(){
 
-  if(!isHost){
-    return;
-  }
+  if(!isHost)return;
 
-
-  Object.values(
-    connections
-  ).forEach(
-    conn=>{
+  Object.values(connections)
+    .forEach(conn=>{
 
       if(conn.open){
 
         conn.send({
-
           type:"STATE",
-
-          state:state
-
+          state
         });
 
       }
 
-    }
-  );
-
+    });
 
   renderState();
 
 }
 
 
-/* =====================================================
-   RESULTS
-===================================================== */
+/* ======================================================
+ JOIN
+====================================================== */
 
-function showResult(
-  won,
-  message
-){
+window.joinLobby=function(){
 
-  if(!state){
+  saveName();
+
+  const code=
+    document.getElementById("joinCode")
+    .value
+    .trim()
+    .toUpperCase();
+
+  if(!/^[A-Z0-9]{4}$/.test(code)){
+
+    onlineStatus.textContent=
+      "Enter a valid 4-character code.";
+
     return;
-  }
-
-
-  if(
-    state.loser!==null
-  ){
-
-    const loser=
-      state.players[
-        state.loser
-      ];
-
-
-    resultIcon.textContent=
-      "☠️";
-
-
-    resultTitle.textContent=
-      "Player Eliminated";
-
-
-    winnerName.textContent=
-      message;
-
-
-  }else{
-
-    resultIcon.textContent=
-      won
-        ? "🏆"
-        : "😔";
-
-
-    resultTitle.textContent=
-      won
-        ? "YOU WIN!"
-        : "GAME OVER";
-
-
-    winnerName.textContent=
-      message;
 
   }
 
+  mode="online";
+  isHost=false;
+  roomCode=code;
 
-  winnerOverlay.classList.remove(
-    "hidden"
-  );
+  onlineStatus.textContent=
+    "Connecting...";
 
+  peer=new Peer();
 
-  if(
-    mode==="online" &&
-    isHost
-  ){
+  peer.on("open",()=>{
 
-    broadcastState();
+    hostConnection=
+      peer.connect(
+        "qpg-"+code,
+        {reliable:true}
+      );
+
+    hostConnection.on("open",()=>{
+
+      hostConnection.send({
+        type:"NAME",
+        name:playerName
+      });
+
+      hideAll();
+
+      lobbyPanel.classList.remove(
+        "hidden"
+      );
+
+      hostCode.textContent=code;
+
+      document
+        .getElementById("hostControls")
+        .classList.add("hidden");
+
+      lobbyStatus.textContent=
+        "Connected to host.";
+
+    });
+
+    hostConnection.on("data",data=>{
+      handleHostMessage(data);
+    });
+
+    hostConnection.on("close",()=>{
+
+      alert(
+        "The host disconnected."
+      );
+
+      goHome();
+
+    });
+
+  });
+
+  peer.on("error",err=>{
+
+    console.error(err);
+
+    onlineStatus.textContent=
+      "Could not join lobby.";
+
+  });
+
+};
+
+function handleHostMessage(data){
+
+  if(data.type==="FULL"){
+
+    alert("Lobby is full.");
+    goHome();
+    return;
+
+  }
+
+  if(data.type==="ASSIGN"){
+
+    myPlayerIndex=data.index;
+    return;
+
+  }
+
+  if(data.type==="LOBBY"){
+
+    renderRemoteLobby(data.players);
+    return;
+
+  }
+
+  if(data.type==="STATE"){
+
+    state=data.state;
+
+    startGame();
+
+    renderState();
 
   }
 
 }
 
 
-/* =====================================================
-   RESTART
-===================================================== */
+/* ======================================================
+ EXIT
+====================================================== */
 
-window.restartCurrentGame=
-function(){
-
-  winnerOverlay.classList.add(
-    "hidden"
-  );
-
-
-  if(mode==="bots"){
-
-    const players=
-      state.players.map(
-        p=>
-          makePlayer(
-            p.name,
-            p.bot
-          )
-      );
-
-
-    state=
-      createGame(
-        players
-      );
-
-
-    myPlayerIndex=0;
-
-    renderState();
-
-    botLoop();
-
-    return;
-
-  }
-
-
-  if(mode==="local"){
-
-    const players=
-      state.players.map(
-        p=>
-          makePlayer(
-            p.name,
-            false
-          )
-      );
-
-
-    state=
-      createGame(
-        players
-      );
-
-
-    myPlayerIndex=0;
-
-    renderState();
-
-    return;
-
-  }
-
-
-  if(
-    mode==="online"
-  ){
-
-    if(isHost){
-
-      state=
-        createGame(
-          state.players.map(
-            p=>({
-
-              ...p,
-
-              hand:[],
-
-              illegalMoves:0,
-
-              eliminated:false,
-
-              connected:true
-
-            })
-          )
-        );
-
-
-      broadcastState();
-
-    }else{
-
-      alert(
-        "Only the host can restart the online game."
-      );
-
-    }
-
-  }
-
-};
-
-
-/* =====================================================
-   EXIT
-===================================================== */
-
-window.leaveLobby=
-function(){
+window.leaveLobby=function(){
 
   disconnectNetwork();
-
   goHome();
 
 };
 
-
-window.leaveGame=
-function(){
+window.leaveGame=function(){
 
   disconnectNetwork();
-
   goHome();
 
 };
-
 
 function disconnectNetwork(){
 
-  Object.values(
-    connections
-  ).forEach(
-    conn=>{
+  Object.values(connections)
+    .forEach(c=>{
 
       try{
-        conn.close();
+        c.close();
       }catch(e){}
 
-    }
-  );
-
+    });
 
   connections={};
-
 
   if(hostConnection){
 
@@ -3949,9 +3167,7 @@ function disconnectNetwork(){
 
   }
 
-
   hostConnection=null;
-
 
   if(peer){
 
@@ -3961,7 +3177,6 @@ function disconnectNetwork(){
 
   }
 
-
   peer=null;
 
   isHost=false;
@@ -3969,66 +3184,51 @@ function disconnectNetwork(){
 }
 
 
-/* =====================================================
-   UTILITIES
-===================================================== */
+/* ======================================================
+ UTILITIES
+====================================================== */
 
 function randomColor(){
 
   return COLORS[
     Math.floor(
-      Math.random()*
-      COLORS.length
+      Math.random()*COLORS.length
     )
   ];
 
 }
 
-
-function randomCode(
-  length
-){
+function randomCode(length){
 
   const chars=
     "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
+  let out="";
 
-  let result="";
+  for(let i=0;i<length;i++){
 
-
-  for(
-    let i=0;
-    i<length;
-    i++
-  ){
-
-    result+=
-      chars[
-        Math.floor(
-          Math.random()*
-          chars.length
-        )
-      ];
+    out+=chars[
+      Math.floor(
+        Math.random()*chars.length
+      )
+    ];
 
   }
 
-
-  return result;
+  return out;
 
 }
-
 
 function randomID(){
 
   if(
-    window.crypto &&
+    window.crypto&&
     crypto.randomUUID
   ){
 
     return crypto.randomUUID();
 
   }
-
 
   return Math.random()
     .toString(36)
@@ -4037,12 +3237,9 @@ function randomID(){
 
 }
 
+function escapeHTML(v){
 
-function escapeHTML(
-  value
-){
-
-  return String(value)
+  return String(v)
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -4052,19 +3249,17 @@ function escapeHTML(
 }
 
 
-/* =====================================================
-   KEYBOARD
-===================================================== */
+/* ======================================================
+ KEYBOARD
+====================================================== */
 
 document.addEventListener(
   "keydown",
-  function(e){
+  e=>{
 
     if(
-      e.key.toLowerCase()==="d" &&
-      !game.classList.contains(
-        "hidden"
-      )
+      e.key.toLowerCase()==="d"&&
+      !game.classList.contains("hidden")
     ){
 
       drawCard();
@@ -4075,15 +3270,12 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   START
-===================================================== */
+/* ======================================================
+ START
+====================================================== */
 
 hideAll();
-
-home.classList.remove(
-  "hidden"
-);
+home.classList.remove("hidden");
 
 </script>
 
