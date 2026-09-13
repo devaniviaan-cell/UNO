@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,7 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
   min-height:100vh;
@@ -20,13 +22,16 @@ body{
     linear-gradient(135deg,#090b20,#12152e 50%,#080914);
   overflow-x:hidden;
 }
+
 button,input,select{font:inherit}
+
 button{
   border:0;
   cursor:pointer;
   color:#fff;
   font-weight:800;
 }
+
 .hidden{display:none!important}
 
 #app{
@@ -35,13 +40,20 @@ button{
   padding:22px 0 40px;
 }
 
-header{text-align:center;margin-bottom:20px}
+header{
+  text-align:center;
+  margin-bottom:20px;
+}
+
 .logo{
   font-size:clamp(42px,9vw,82px);
   font-weight:1000;
   letter-spacing:4px;
-  text-shadow:0 0 15px #ff304f,0 0 35px #ff304f;
+  text-shadow:
+    0 0 15px #ff304f,
+    0 0 35px #ff304f;
 }
+
 .subtitle{
   opacity:.8;
   font-weight:700;
@@ -58,8 +70,13 @@ header{text-align:center;margin-bottom:20px}
   margin-bottom:18px;
 }
 
-h2,h3{margin-top:0}
-.center{text-align:center}
+h2,h3{
+  margin-top:0;
+}
+
+.center{
+  text-align:center;
+}
 
 input,select{
   width:100%;
@@ -71,7 +88,10 @@ input,select{
   outline:none;
   margin:7px 0;
 }
-select option{color:#000}
+
+select option{
+  color:#000;
+}
 
 .btn{
   padding:13px 20px;
@@ -81,16 +101,24 @@ select option{color:#000}
   box-shadow:0 7px 20px rgba(255,50,80,.25);
   transition:.15s;
 }
-.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+
+.btn:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.1);
+}
+
 .btn.secondary{
   background:linear-gradient(135deg,#3457ff,#7147ff);
 }
+
 .btn.green{
   background:linear-gradient(135deg,#00a878,#00d68f);
 }
+
 .btn.gray{
   background:rgba(255,255,255,.12);
 }
+
 .btn:disabled{
   opacity:.45;
   cursor:not-allowed;
@@ -102,6 +130,7 @@ select option{color:#000}
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:14px;
 }
+
 .menu-card{
   padding:25px;
   border-radius:20px;
@@ -109,7 +138,43 @@ select option{color:#000}
   border:1px solid rgba(255,255,255,.13);
   text-align:center;
 }
-.menu-card .big{font-size:45px;margin-bottom:10px}
+
+.menu-card .big{
+  font-size:45px;
+  margin-bottom:10px;
+}
+
+.bot-options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:18px 0;
+}
+
+.bot-choice{
+  padding:22px 10px;
+  border-radius:18px;
+  background:rgba(255,255,255,.08);
+  border:2px solid rgba(255,255,255,.12);
+  transition:.15s;
+  cursor:pointer;
+}
+
+.bot-choice:hover{
+  transform:translateY(-3px);
+  border-color:#ffe66d;
+  background:rgba(255,230,109,.1);
+}
+
+.bot-choice .emoji{
+  font-size:38px;
+}
+
+.bot-choice strong{
+  display:block;
+  font-size:20px;
+  margin-top:7px;
+}
 
 .row{
   display:flex;
@@ -117,7 +182,10 @@ select option{color:#000}
   gap:10px;
   align-items:center;
 }
-.row>*{flex:1}
+
+.row>*{
+  flex:1;
+}
 
 .code{
   font-size:38px;
@@ -141,6 +209,7 @@ select option{color:#000}
   gap:10px;
   margin-bottom:20px;
 }
+
 .player{
   min-width:150px;
   padding:12px;
@@ -149,10 +218,12 @@ select option{color:#000}
   border:1px solid rgba(255,255,255,.1);
   text-align:center;
 }
+
 .player.active{
   border-color:#ffe66d;
   box-shadow:0 0 22px rgba(255,230,109,.35);
 }
+
 .player.eliminated{
   opacity:.35;
   text-decoration:line-through;
@@ -171,6 +242,7 @@ select option{color:#000}
   gap:35px;
   min-height:210px;
 }
+
 .pile{
   width:125px;
   height:175px;
@@ -182,28 +254,43 @@ select option{color:#000}
   font-weight:1000;
   box-shadow:0 15px 30px rgba(0,0,0,.4);
 }
+
 .deck{
   background:linear-gradient(135deg,#191b30,#05050d);
   border:4px solid white;
 }
-.deck::after{
-  content:"UNO";
-  position:absolute;
-}
+
 .discard{
   position:relative;
   border:4px solid white;
   overflow:hidden;
 }
-.discard .discardText{
+
+.discardText{
   z-index:2;
   font-size:38px;
 }
-.red{background:linear-gradient(135deg,#ff294d,#a60025)}
-.yellow{background:linear-gradient(135deg,#ffe44e,#e09b00);color:#111}
-.green{background:linear-gradient(135deg,#20e08b,#007c52)}
-.blue{background:linear-gradient(135deg,#42a5ff,#1245cc)}
-.black{background:linear-gradient(135deg,#252536,#050509)}
+
+.red{
+  background:linear-gradient(135deg,#ff294d,#a60025);
+}
+
+.yellow{
+  background:linear-gradient(135deg,#ffe44e,#e09b00);
+  color:#111;
+}
+
+.green{
+  background:linear-gradient(135deg,#20e08b,#007c52);
+}
+
+.blue{
+  background:linear-gradient(135deg,#42a5ff,#1245cc);
+}
+
+.black{
+  background:linear-gradient(135deg,#252536,#050509);
+}
 
 .hand{
   display:flex;
@@ -214,6 +301,7 @@ select option{color:#000}
   min-height:175px;
   padding:15px;
 }
+
 .card{
   position:relative;
   width:82px;
@@ -230,21 +318,32 @@ select option{color:#000}
   transition:.15s;
   user-select:none;
 }
+
 .card:hover{
   transform:translateY(-12px) scale(1.04);
   z-index:3;
 }
+
 .card small{
   position:absolute;
   bottom:7px;
-  font-size:12px;
+  font-size:11px;
   opacity:.9;
 }
+
 .card.wild{
-  background:conic-gradient(#ff294d,#ffe44e,#20e08b,#42a5ff,#ff294d);
+  background:
+    conic-gradient(
+      #ff294d,
+      #ffe44e,
+      #20e08b,
+      #42a5ff,
+      #ff294d
+    );
   color:#fff;
   text-shadow:0 2px 4px #000;
 }
+
 .card.disabled{
   opacity:.45;
   filter:grayscale(.6);
@@ -254,13 +353,6 @@ select option{color:#000}
   text-align:center;
   font-weight:800;
   min-height:28px;
-}
-.color-dot{
-  display:inline-block;
-  width:15px;
-  height:15px;
-  border-radius:50%;
-  margin-right:6px;
 }
 
 .actionbar{
@@ -279,6 +371,7 @@ select option{color:#000}
   align-items:center;
   padding:20px;
 }
+
 .modal{
   width:min(500px,100%);
   background:#15172d;
@@ -294,11 +387,13 @@ select option{color:#000}
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
+
 .color-btn{
   height:70px;
   border-radius:16px;
   font-size:20px;
 }
+
 .color-btn.red{background:#e51c42}
 .color-btn.yellow{background:#e5b500;color:#111}
 .color-btn.green{background:#00a968}
@@ -308,20 +403,53 @@ select option{color:#000}
   color:#ffe66d;
   font-weight:800;
 }
-.error{color:#ff6179;font-weight:800}
+
+.error{
+  color:#ff6179;
+  font-weight:800;
+}
 
 @media(max-width:600px){
-  #app{width:96%;padding-top:10px}
-  .panel{padding:15px;border-radius:18px}
-  .card{width:63px;height:98px;font-size:22px}
-  .pile{width:95px;height:135px;font-size:32px}
-  .table{gap:18px}
-  .player{min-width:125px}
+
+  #app{
+    width:96%;
+    padding-top:10px;
+  }
+
+  .panel{
+    padding:15px;
+    border-radius:18px;
+  }
+
+  .card{
+    width:63px;
+    height:98px;
+    font-size:22px;
+  }
+
+  .pile{
+    width:95px;
+    height:135px;
+    font-size:32px;
+  }
+
+  .table{
+    gap:18px;
+  }
+
+  .player{
+    min-width:125px;
+  }
+
+  .bot-options{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <div id="app">
 
 <header>
@@ -329,187 +457,526 @@ select option{color:#000}
   <div class="subtitle">QPG CARD BATTLE</div>
 </header>
 
+
 <!-- HOME -->
 <section id="homePanel" class="panel">
+
   <h2 class="center">Choose Game Mode</h2>
 
   <div class="menu-grid">
 
     <div class="menu-card">
+
       <div class="big">🤖</div>
+
       <h3>Vs Bots</h3>
-      <p>Play against computer players.</p>
-      <button class="btn" onclick="startBots()">Play Bots</button>
+
+      <p>
+        Choose between 1, 2, or 3 computer players.
+      </p>
+
+      <button
+        class="btn"
+        onclick="showBotSetup()"
+      >
+        Play Bots
+      </button>
+
     </div>
 
+
     <div class="menu-card">
+
       <div class="big">👥</div>
+
       <h3>Local Multiplayer</h3>
-      <p>Pass the device between players.</p>
-      <button class="btn secondary" onclick="showLocalSetup()">Local Game</button>
+
+      <p>
+        Pass the device between players.
+      </p>
+
+      <button
+        class="btn secondary"
+        onclick="showLocalSetup()"
+      >
+        Local Game
+      </button>
+
     </div>
+
 
     <div class="menu-card">
+
       <div class="big">🌐</div>
+
       <h3>Online Multiplayer</h3>
-      <p>Create or join a lobby with a code.</p>
-      <button class="btn green" onclick="showOnline()">Online</button>
+
+      <p>
+        Create or join a lobby using a code.
+      </p>
+
+      <button
+        class="btn green"
+        onclick="showOnline()"
+      >
+        Online
+      </button>
+
     </div>
 
   </div>
+
 </section>
 
-<!-- NAME -->
-<section id="namePanel" class="panel hidden">
-  <h2>Player Name</h2>
-  <input id="nameInput" maxlength="16" placeholder="Enter your name">
-  <div class="center">
-    <button class="btn" onclick="saveNameAndContinue()">Continue</button>
-    <button class="btn gray" onclick="goHome()">Back</button>
+
+<!-- BOT SETUP -->
+<section id="botPanel" class="panel hidden">
+
+  <h2 class="center">Choose Your Bots</h2>
+
+  <p class="center">
+    You can play against 1, 2, or 3 bots.
+  </p>
+
+  <div class="bot-options">
+
+    <div
+      class="bot-choice"
+      onclick="startBots(1)"
+    >
+      <div class="emoji">🤖</div>
+      <strong>1 Bot</strong>
+      <span>2-player game</span>
+    </div>
+
+    <div
+      class="bot-choice"
+      onclick="startBots(2)"
+    >
+      <div class="emoji">🤖🤖</div>
+      <strong>2 Bots</strong>
+      <span>3-player game</span>
+    </div>
+
+    <div
+      class="bot-choice"
+      onclick="startBots(3)"
+    >
+      <div class="emoji">🤖🤖🤖</div>
+      <strong>3 Bots</strong>
+      <span>4-player game</span>
+    </div>
+
   </div>
+
+  <div class="center">
+
+    <button
+      class="btn gray"
+      onclick="goHome()"
+    >
+      Back
+    </button>
+
+  </div>
+
 </section>
+
 
 <!-- LOCAL SETUP -->
 <section id="localPanel" class="panel hidden">
+
   <h2>Local Multiplayer</h2>
 
   <label>Number of players</label>
+
   <select id="localPlayers">
-    <option value="2">2 Players</option>
-    <option value="3">3 Players</option>
-    <option value="4">4 Players</option>
+
+    <option value="2">
+      2 Players
+    </option>
+
+    <option value="3">
+      3 Players
+    </option>
+
+    <option value="4">
+      4 Players
+    </option>
+
   </select>
 
   <div class="center">
-    <button class="btn secondary" onclick="startLocal()">Start Local Game</button>
-    <button class="btn gray" onclick="goHome()">Back</button>
+
+    <button
+      class="btn secondary"
+      onclick="startLocal()"
+    >
+      Start Local Game
+    </button>
+
+    <button
+      class="btn gray"
+      onclick="goHome()"
+    >
+      Back
+    </button>
+
   </div>
+
 </section>
+
 
 <!-- ONLINE -->
 <section id="onlinePanel" class="panel hidden">
-  <h2 class="center">Online Multiplayer</h2>
+
+  <h2 class="center">
+    Online Multiplayer
+  </h2>
 
   <div class="row">
-    <div>
-      <h3>Create Lobby</h3>
-      <input id="hostName" maxlength="16" placeholder="Your name">
-      <button class="btn green" onclick="createLobby()">Create Lobby</button>
-    </div>
 
     <div>
-      <h3>Join Lobby</h3>
-      <input id="joinName" maxlength="16" placeholder="Your name">
-      <input id="joinCode" maxlength="4" placeholder="4-digit code">
-      <button class="btn secondary" onclick="joinLobby()">Join Lobby</button>
+
+      <h3>Create Lobby</h3>
+
+      <input
+        id="hostName"
+        maxlength="16"
+        placeholder="Your name"
+      >
+
+      <button
+        class="btn green"
+        onclick="createLobby()"
+      >
+        Create Lobby
+      </button>
+
     </div>
+
+
+    <div>
+
+      <h3>Join Lobby</h3>
+
+      <input
+        id="joinName"
+        maxlength="16"
+        placeholder="Your name"
+      >
+
+      <input
+        id="joinCode"
+        maxlength="4"
+        placeholder="4-digit code"
+      >
+
+      <button
+        class="btn secondary"
+        onclick="joinLobby()"
+      >
+        Join Lobby
+      </button>
+
+    </div>
+
   </div>
 
-  <div id="onlineStatus" class="status center"></div>
+  <div
+    id="onlineStatus"
+    class="status center"
+  ></div>
 
   <div class="center">
-    <button class="btn gray" onclick="goHome()">Back</button>
+
+    <button
+      class="btn gray"
+      onclick="goHome()"
+    >
+      Back
+    </button>
+
   </div>
+
 </section>
+
 
 <!-- LOBBY -->
 <section id="lobbyPanel" class="panel hidden">
-  <h2 class="center">Game Lobby</h2>
 
-  <div class="center">Room Code</div>
-  <div id="hostCode" class="code center">----</div>
-
-  <div id="lobbyStatus" class="status center"></div>
-
-  <h3>Players</h3>
-  <div id="lobbyPlayers" class="players"></div>
-
-  <div id="hostControls" class="center hidden">
-    <p class="warning">You are the host.</p>
-    <button id="startGameButton" class="btn green" onclick="hostStartGame()">
-      START GAME
-    </button>
-  </div>
-
-  <div id="joinerControls" class="center hidden">
-    <p>⏳ Waiting for the host to start the game...</p>
-  </div>
+  <h2 class="center">
+    Game Lobby
+  </h2>
 
   <div class="center">
-    <button class="btn gray" onclick="leaveOnline()">Leave Lobby</button>
+    Room Code
   </div>
+
+  <div
+    id="hostCode"
+    class="code center"
+  >
+    ----
+  </div>
+
+  <div
+    id="lobbyStatus"
+    class="status center"
+  ></div>
+
+  <h3>Players</h3>
+
+  <div
+    id="lobbyPlayers"
+    class="players"
+  ></div>
+
+
+  <!-- HOST ONLY -->
+  <div
+    id="hostControls"
+    class="center hidden"
+  >
+
+    <p class="warning">
+      👑 You are the host.
+    </p>
+
+    <button
+      id="startGameButton"
+      class="btn green"
+      onclick="hostStartGame()"
+    >
+      START GAME
+    </button>
+
+  </div>
+
+
+  <!-- JOINERS ONLY -->
+  <div
+    id="joinerControls"
+    class="center hidden"
+  >
+
+    <p>
+      ⏳ Waiting for the host to start the game...
+    </p>
+
+  </div>
+
+
+  <div class="center">
+
+    <button
+      class="btn gray"
+      onclick="leaveOnline()"
+    >
+      Leave Lobby
+    </button>
+
+  </div>
+
 </section>
+
 
 <!-- GAME -->
 <section id="gamePanel" class="panel hidden">
 
   <div class="game-board">
 
-    <div id="players" class="players"></div>
+    <div
+      id="players"
+      class="players"
+    ></div>
 
-    <div id="gameInfo" class="info"></div>
+
+    <div
+      id="gameInfo"
+      class="info"
+    ></div>
+
 
     <div class="table">
 
       <div>
-        <div class="pile deck" onclick="drawCard()">🂠</div>
-        <div class="center">DRAW</div>
+
+        <div
+          class="pile deck"
+          onclick="drawCard()"
+        >
+          🂠
+        </div>
+
+        <div class="center">
+          DRAW
+        </div>
+
       </div>
+
 
       <div>
-        <div id="discardPile" class="pile discard black">
-          <span id="discardText" class="discardText">—</span>
+
+        <div
+          id="discardPile"
+          class="pile discard black"
+        >
+
+          <span
+            id="discardText"
+            class="discardText"
+          >
+            —
+          </span>
+
         </div>
-        <div class="center">DISCARD</div>
+
+        <div class="center">
+          DISCARD
+        </div>
+
       </div>
 
     </div>
 
+
     <div>
-      <h3 class="center">Your Cards</h3>
-      <div id="hand" class="hand"></div>
+
+      <h3 class="center">
+        Your Cards
+      </h3>
+
+      <div
+        id="hand"
+        class="hand"
+      ></div>
+
     </div>
+
 
     <div class="actionbar">
-      <button class="btn secondary" onclick="drawCard()">Draw Card</button>
-      <button class="btn gray" onclick="quitGame()">Quit</button>
+
+      <button
+        class="btn secondary"
+        onclick="drawCard()"
+      >
+        Draw Card
+      </button>
+
+      <button
+        class="btn gray"
+        onclick="quitGame()"
+      >
+        Quit
+      </button>
+
     </div>
 
-    <div id="message" class="info"></div>
-    <div id="penaltyMessage" class="error info"></div>
+
+    <div
+      id="message"
+      class="info"
+    ></div>
+
+    <div
+      id="penaltyMessage"
+      class="error info"
+    ></div>
 
   </div>
+
 </section>
 
 </div>
 
+
 <!-- COLOR PICKER -->
-<div id="colorOverlay" class="overlay hidden">
+<div
+  id="colorOverlay"
+  class="overlay hidden"
+>
+
   <div class="modal">
-    <h2>Choose a Color</h2>
+
+    <h2>
+      Choose a Color
+    </h2>
+
     <div class="color-options">
-      <button class="color-btn red" onclick="chooseColor('red')">RED</button>
-      <button class="color-btn yellow" onclick="chooseColor('yellow')">YELLOW</button>
-      <button class="color-btn green" onclick="chooseColor('green')">GREEN</button>
-      <button class="color-btn blue" onclick="chooseColor('blue')">BLUE</button>
+
+      <button
+        class="color-btn red"
+        onclick="chooseColor('red')"
+      >
+        RED
+      </button>
+
+      <button
+        class="color-btn yellow"
+        onclick="chooseColor('yellow')"
+      >
+        YELLOW
+      </button>
+
+      <button
+        class="color-btn green"
+        onclick="chooseColor('green')"
+      >
+        GREEN
+      </button>
+
+      <button
+        class="color-btn blue"
+        onclick="chooseColor('blue')"
+      >
+        BLUE
+      </button>
+
     </div>
+
   </div>
+
 </div>
+
 
 <!-- RESULT -->
-<div id="resultOverlay" class="overlay hidden">
+<div
+  id="resultOverlay"
+  class="overlay hidden"
+>
+
   <div class="modal">
-    <h1 id="resultTitle">Game Over</h1>
+
+    <h1 id="resultTitle">
+      Game Over
+    </h1>
+
     <p id="resultText"></p>
-    <button class="btn green" onclick="newGame()">Play Again</button>
-    <button class="btn gray" onclick="goHome()">Home</button>
+
+    <button
+      class="btn green"
+      onclick="newGame()"
+    >
+      Play Again
+    </button>
+
+    <button
+      class="btn gray"
+      onclick="goHome()"
+    >
+      Home
+    </button>
+
   </div>
+
 </div>
 
+
 <script>
+
 /* =========================================================
    UNO — QPG
-   Online multiplayer uses PeerJS.
    ========================================================= */
 
 const MAX_PLAYERS = 4;
@@ -531,6 +998,7 @@ let pendingCardIndex = null;
 let pendingActionPlayer = null;
 
 let botTimer = null;
+
 let resultShown = false;
 
 
@@ -538,149 +1006,289 @@ let resultShown = false;
    ELEMENTS
    ========================================================= */
 
-const homePanel = document.getElementById("homePanel");
-const namePanel = document.getElementById("namePanel");
-const localPanel = document.getElementById("localPanel");
-const onlinePanel = document.getElementById("onlinePanel");
-const lobbyPanel = document.getElementById("lobbyPanel");
-const gamePanel = document.getElementById("gamePanel");
+const homePanel =
+  document.getElementById("homePanel");
 
-const lobbyPlayers = document.getElementById("lobbyPlayers");
-const playersEl = document.getElementById("players");
-const handEl = document.getElementById("hand");
-const discardPile = document.getElementById("discardPile");
-const discardText = document.getElementById("discardText");
-const gameInfo = document.getElementById("gameInfo");
-const messageEl = document.getElementById("message");
-const penaltyMessage = document.getElementById("penaltyMessage");
+const botPanel =
+  document.getElementById("botPanel");
 
-const colorOverlay = document.getElementById("colorOverlay");
-const resultOverlay = document.getElementById("resultOverlay");
+const localPanel =
+  document.getElementById("localPanel");
+
+const onlinePanel =
+  document.getElementById("onlinePanel");
+
+const lobbyPanel =
+  document.getElementById("lobbyPanel");
+
+const gamePanel =
+  document.getElementById("gamePanel");
+
+const lobbyPlayers =
+  document.getElementById("lobbyPlayers");
+
+const playersEl =
+  document.getElementById("players");
+
+const handEl =
+  document.getElementById("hand");
+
+const discardPile =
+  document.getElementById("discardPile");
+
+const discardText =
+  document.getElementById("discardText");
+
+const gameInfo =
+  document.getElementById("gameInfo");
+
+const messageEl =
+  document.getElementById("message");
+
+const penaltyMessage =
+  document.getElementById("penaltyMessage");
+
+const colorOverlay =
+  document.getElementById("colorOverlay");
+
+const resultOverlay =
+  document.getElementById("resultOverlay");
 
 
 /* =========================================================
-   GENERAL UI
+   UI
    ========================================================= */
 
 function hideAll(){
+
   [
     homePanel,
-    namePanel,
+    botPanel,
     localPanel,
     onlinePanel,
     lobbyPanel,
     gamePanel
-  ].forEach(x=>x.classList.add("hidden"));
+  ].forEach(el=>{
+    el.classList.add("hidden");
+  });
+
 }
 
+
 function goHome(){
+
   clearTimeout(botTimer);
+
   closePeer();
 
-  mode = null;
-  state = null;
-  isHost = false;
-  roomCode = "";
-  myPlayerIndex = 0;
-  resultShown = false;
+  mode=null;
+  state=null;
+  isHost=false;
+  roomCode="";
+  myPlayerIndex=0;
+  resultShown=false;
+
+  colorOverlay.classList.add("hidden");
+  resultOverlay.classList.add("hidden");
 
   hideAll();
+
   homePanel.classList.remove("hidden");
 }
 
-function showOnline(){
+
+function showBotSetup(){
+
   hideAll();
-  onlinePanel.classList.remove("hidden");
-  document.getElementById("onlineStatus").textContent = "";
+
+  botPanel.classList.remove("hidden");
 }
+
 
 function showLocalSetup(){
+
   hideAll();
+
   localPanel.classList.remove("hidden");
 }
 
-function saveNameAndContinue(){
-  const n = document.getElementById("nameInput").value.trim();
 
-  if(n) playerName = n.slice(0,16);
+function showOnline(){
 
   hideAll();
-  localPanel.classList.remove("hidden");
+
+  onlinePanel.classList.remove("hidden");
+
+  document.getElementById(
+    "onlineStatus"
+  ).textContent="";
 }
+
 
 function quitGame(){
-  if(confirm("Quit this game?")){
+
+  if(
+    confirm("Quit this game?")
+  ){
     goHome();
   }
 }
 
 
 /* =========================================================
-   CARD CREATION
+   CARDS
    ========================================================= */
 
-const COLORS = ["red","yellow","green","blue"];
+const COLORS=[
+  "red",
+  "yellow",
+  "green",
+  "blue"
+];
+
 
 function card(color,type,value){
+
   return {
-    color,
-    type,
+    color:color,
+    type:type,
     value:value ?? null,
-    id:Math.random().toString(36).slice(2)
+    id:Math.random()
+      .toString(36)
+      .slice(2)
   };
+
 }
+
 
 function createDeck(){
 
-  const deck = [];
+  const deck=[];
 
-  for(const c of COLORS){
+  for(const color of COLORS){
 
     for(let n=0;n<=9;n++){
-      deck.push(card(c,"number",n));
+
+      deck.push(
+        card(color,"number",n)
+      );
 
       if(n!==0){
-        deck.push(card(c,"number",n));
+
+        deck.push(
+          card(color,"number",n)
+        );
+
       }
+
     }
 
-    deck.push(card(c,"skip"));
-    deck.push(card(c,"skip"));
 
-    deck.push(card(c,"reverse"));
-    deck.push(card(c,"reverse"));
+    deck.push(
+      card(color,"skip")
+    );
 
-    deck.push(card(c,"+2"));
-    deck.push(card(c,"+2"));
+    deck.push(
+      card(color,"skip")
+    );
 
-    /* Extra cards requested */
-    deck.push(card(c,"+6"));
-    deck.push(card(c,"+6"));
 
-    deck.push(card(c,"+10"));
-    deck.push(card(c,"+10"));
+    deck.push(
+      card(color,"reverse")
+    );
+
+    deck.push(
+      card(color,"reverse")
+    );
+
+
+    deck.push(
+      card(color,"+2")
+    );
+
+    deck.push(
+      card(color,"+2")
+    );
+
+
+    deck.push(
+      card(color,"+6")
+    );
+
+    deck.push(
+      card(color,"+6")
+    );
+
+
+    deck.push(
+      card(color,"+10")
+    );
+
+    deck.push(
+      card(color,"+10")
+    );
+
   }
+
 
   for(let i=0;i<4;i++){
-    deck.push(card("wild","wild"));
-    deck.push(card("wild","+4"));
+
+    deck.push(
+      card("wild","wild")
+    );
+
+    deck.push(
+      card("wild","+4")
+    );
+
   }
+
 
   return shuffle(deck);
 }
 
-function shuffle(a){
-  for(let i=a.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
+
+function shuffle(array){
+
+  for(
+    let i=array.length-1;
+    i>0;
+    i--
+  ){
+
+    const j=
+      Math.floor(
+        Math.random()*(i+1)
+      );
+
+    [
+      array[i],
+      array[j]
+    ]=[
+      array[j],
+      array[i]
+    ];
+
   }
-  return a;
+
+  return array;
 }
 
+
 function cardText(c){
-  if(!c) return "—";
-  if(c.type==="number") return String(c.value);
-  if(c.type==="wild") return "★";
+
+  if(!c){
+    return "—";
+  }
+
+  if(c.type==="number"){
+    return String(c.value);
+  }
+
+  if(c.type==="wild"){
+    return "★";
+  }
+
   return c.type;
 }
 
@@ -689,72 +1297,129 @@ function cardText(c){
    PLAYERS
    ========================================================= */
 
-function makePlayer(name,isBot=false){
+function makePlayer(
+  name,
+  isBot=false
+){
+
   return {
+
     name:name || "Player",
+
     hand:[],
+
     illegalMoves:0,
+
     eliminated:false,
-    bot:isBot,
+
+    bot:!!isBot,
+
     connected:true
+
   };
+
 }
+
 
 function createGame(players){
 
-  const newState = {
+  const newState={
+
     players:players.map(p=>({
+
       name:p.name,
+
       hand:[],
+
       illegalMoves:0,
+
       eliminated:false,
+
       bot:!!p.bot,
-      connected:p.connected !== false
+
+      connected:
+        p.connected!==false
+
     })),
 
     deck:createDeck(),
+
     discard:[],
+
     turn:0,
+
     direction:1,
+
     currentColor:null,
+
     winner:null,
+
     loser:null,
+
     started:true,
+
     lastMessage:"Game started!"
+
   };
 
-  for(const p of newState.players){
+
+  for(
+    const p of newState.players
+  ){
+
     for(let i=0;i<7;i++){
-      drawFromDeck(newState,p);
+
+      drawFromDeck(
+        newState,
+        p
+      );
+
     }
+
   }
 
-  let first;
 
-  while(newState.deck.length){
-    first = newState.deck.pop();
+  let first=null;
+
+
+  while(
+    newState.deck.length
+  ){
+
+    first=
+      newState.deck.pop();
 
     if(
       first.type==="number" ||
       first.type==="skip" ||
       first.type==="reverse"
     ){
+
       break;
+
     }
 
     newState.deck.unshift(first);
+
   }
+
 
   newState.discard.push(first);
-  newState.currentColor=first.color;
 
-  if(first.type==="reverse"){
-    newState.direction=1;
-  }
+  newState.currentColor=
+    first.color;
+
 
   if(first.type==="skip"){
-    newState.turn=nextIndex(newState,0);
+
+    newState.turn=
+      nextIndex(
+        newState,
+        0
+      );
+
   }
+
 
   return newState;
 }
@@ -767,85 +1432,160 @@ function createGame(players){
 function drawFromDeck(s,p){
 
   if(!s.deck.length){
+
     recycleDiscard(s);
+
   }
 
-  if(!s.deck.length) return null;
+  if(!s.deck.length){
 
-  const c=s.deck.pop();
+    return null;
+
+  }
+
+  const c=
+    s.deck.pop();
+
   p.hand.push(c);
+
   return c;
 }
 
+
 function recycleDiscard(s){
 
-  if(s.discard.length<=1) return;
+  if(
+    s.discard.length<=1
+  ){
+    return;
+  }
 
-  const top=s.discard.pop();
+  const top=
+    s.discard.pop();
 
-  s.deck=shuffle(s.discard);
+  s.deck=
+    shuffle(s.discard);
+
   s.discard=[top];
 }
 
+
 function topCard(){
-  return state && state.discard[state.discard.length-1];
+
+  if(
+    !state ||
+    !state.discard.length
+  ){
+    return null;
+  }
+
+  return state.discard[
+    state.discard.length-1
+  ];
 }
 
 
 /* =========================================================
-   ACTIVE PLAYER LOGIC
+   TURN LOGIC
    ========================================================= */
 
-function activePlayer(s,i){
-  const p=s.players[i];
+function activePlayer(s,index){
+
+  const p=s.players[index];
 
   return !!p &&
     !p.eliminated &&
-    p.connected !== false;
+    p.connected!==false;
 }
+
 
 function nextIndex(s,index){
 
   let i=index;
 
-  for(let count=0;count<s.players.length;count++){
+  for(
+    let count=0;
+    count<s.players.length;
+    count++
+  ){
 
-    i=(i+s.direction+s.players.length)%s.players.length;
+    i=
+      (
+        i+
+        s.direction+
+        s.players.length
+      ) %
+      s.players.length;
 
-    if(activePlayer(s,i)) return i;
+    if(
+      activePlayer(s,i)
+    ){
+
+      return i;
+
+    }
+
   }
 
   return index;
 }
 
+
 function nextTurn(){
-  state.turn=nextIndex(state,state.turn);
+
+  state.turn=
+    nextIndex(
+      state,
+      state.turn
+    );
 }
 
 
 /* =========================================================
-   VALID MOVES
+   VALID CARD
    ========================================================= */
 
 function canPlay(c){
 
   const top=topCard();
 
-  if(!c || !top) return false;
+  if(!c || !top){
+    return false;
+  }
 
-  if(c.color==="wild") return true;
 
-  if(c.color===state.currentColor) return true;
+  if(c.color==="wild"){
+    return true;
+  }
+
+
+  if(
+    c.color===state.currentColor
+  ){
+    return true;
+  }
+
 
   if(
     c.type==="number" &&
     top.type==="number" &&
     c.value===top.value
-  ) return true;
+  ){
 
-  if(c.type===top.type && c.type!=="number"){
     return true;
+
   }
+
+
+  if(
+    c.type===top.type &&
+    c.type!=="number"
+  ){
+
+    return true;
+
+  }
+
 
   return false;
 }
@@ -857,211 +1597,447 @@ function canPlay(c){
 
 function renderState(){
 
-  if(!state) return;
-
-  if(!state.started){
-    hideAll();
-    lobbyPanel.classList.remove("hidden");
-    renderLobby();
+  if(!state){
     return;
   }
 
-  hideAll();
-  gamePanel.classList.remove("hidden");
 
-  /*
-    In local mode the current player controls the device.
-    This allows all local players to play.
-  */
-  if(mode==="local"){
-    myPlayerIndex=state.turn;
+  if(!state.started){
+
+    hideAll();
+
+    lobbyPanel.classList.remove(
+      "hidden"
+    );
+
+    renderLobby();
+
+    return;
+
   }
 
-  const me=state.players[myPlayerIndex];
+
+  hideAll();
+
+  gamePanel.classList.remove(
+    "hidden"
+  );
+
+
+  /*
+    Local multiplayer uses pass-the-device.
+  */
+
+  if(mode==="local"){
+
+    myPlayerIndex=
+      state.turn;
+
+  }
+
+
+  const me=
+    state.players[
+      myPlayerIndex
+    ];
+
 
   renderPlayers();
+
   renderDiscard();
+
   renderHand(me);
 
-  const turnPlayer=state.players[state.turn];
+
+  const turnPlayer=
+    state.players[
+      state.turn
+    ];
+
 
   if(turnPlayer){
 
     if(mode==="local"){
-      gameInfo.textContent =
-        "Pass the device to " + turnPlayer.name + " — it's their turn.";
-    }else if(state.turn===myPlayerIndex){
-      gameInfo.textContent="🔥 YOUR TURN";
-    }else{
+
       gameInfo.textContent=
-        "Waiting for " + turnPlayer.name + "...";
+        "Pass the device to "+
+        turnPlayer.name+
+        " — it's their turn.";
+
     }
+    else if(
+      state.turn===myPlayerIndex
+    ){
+
+      gameInfo.textContent=
+        "🔥 YOUR TURN";
+
+    }
+    else{
+
+      gameInfo.textContent=
+        "Waiting for "+
+        turnPlayer.name+
+        "...";
+
+    }
+
   }
 
-  messageEl.textContent=state.lastMessage || "";
 
-  if(state.winner!==null || state.loser!==null){
+  messageEl.textContent=
+    state.lastMessage || "";
+
+
+  if(
+    state.winner!==null ||
+    state.loser!==null
+  ){
+
     showResultFromState();
+
   }
+
 }
+
 
 function renderPlayers(){
 
   playersEl.innerHTML="";
 
-  state.players.forEach((p,i)=>{
 
-    const div=document.createElement("div");
-    div.className="player";
+  state.players.forEach(
+    (p,i)=>{
 
-    if(i===state.turn && !p.eliminated){
-      div.classList.add("active");
+      const div=
+        document.createElement(
+          "div"
+        );
+
+      div.className="player";
+
+
+      if(
+        i===state.turn &&
+        !p.eliminated
+      ){
+
+        div.classList.add(
+          "active"
+        );
+
+      }
+
+
+      if(p.eliminated){
+
+        div.classList.add(
+          "eliminated"
+        );
+
+      }
+
+
+      div.innerHTML=
+        "<strong>"+
+        escapeHTML(p.name)+
+        "</strong><br>"+
+        (p.bot?"🤖 ":"")+
+        (
+          p.eliminated
+          ?"ELIMINATED"
+          :
+          p.connected===false
+          ?"DISCONNECTED"
+          :
+          "🃏 "+p.hand.length+
+          " cards"
+        )+
+        "<br><small>Strikes: "+
+        p.illegalMoves+
+        "/3</small>";
+
+
+      playersEl.appendChild(
+        div
+      );
+
     }
+  );
 
-    if(p.eliminated){
-      div.classList.add("eliminated");
-    }
-
-    div.innerHTML=
-      "<strong>"+escapeHTML(p.name)+"</strong><br>"+
-      (p.bot?"🤖 ":"")+
-      (p.eliminated?"ELIMINATED":
-      p.connected===false?"DISCONNECTED":
-      "🃏 "+p.hand.length+" cards")+
-      "<br><small>Strikes: "+p.illegalMoves+"/3</small>";
-
-    playersEl.appendChild(div);
-  });
 }
+
 
 function renderDiscard(){
 
   const c=topCard();
 
-  discardPile.className="pile discard "+(c?.color || "black");
 
-  discardText.textContent=cardText(c);
+  discardPile.className=
+    "pile discard "+
+    (c?.color || "black");
 
-  if(c?.color==="yellow"){
-    discardText.style.color="#111";
-  }else{
-    discardText.style.color="#fff";
+
+  discardText.textContent=
+    cardText(c);
+
+
+  if(
+    c?.color==="yellow"
+  ){
+
+    discardText.style.color=
+      "#111";
+
   }
+  else{
+
+    discardText.style.color=
+      "#fff";
+
+  }
+
 }
+
 
 function renderHand(me){
 
   handEl.innerHTML="";
 
-  if(!me) return;
 
-  me.hand.forEach((c,i)=>{
+  if(!me){
+    return;
+  }
 
-    const el=document.createElement("div");
 
-    el.className="card "+(c.color==="wild"?"wild":c.color);
+  me.hand.forEach(
+    (c,i)=>{
 
-    if(
-      state.turn!==myPlayerIndex ||
-      me.eliminated ||
-      !activePlayer(state,myPlayerIndex)
-    ){
-      el.classList.add("disabled");
+      const el=
+        document.createElement(
+          "div"
+        );
+
+      el.className=
+        "card "+
+        (
+          c.color==="wild"
+          ?"wild"
+          :
+          c.color
+        );
+
+
+      if(
+        state.turn!==myPlayerIndex ||
+        me.eliminated ||
+        !activePlayer(
+          state,
+          myPlayerIndex
+        )
+      ){
+
+        el.classList.add(
+          "disabled"
+        );
+
+      }
+
+
+      el.innerHTML=
+        escapeHTML(
+          cardText(c)
+        )+
+        "<small>"+
+        escapeHTML(c.type)+
+        "</small>";
+
+
+      el.onclick=()=>{
+        attemptPlay(i);
+      };
+
+
+      handEl.appendChild(el);
+
     }
+  );
 
-    el.innerHTML=
-      escapeHTML(cardText(c))+
-      "<small>"+escapeHTML(c.type)+"</small>";
-
-    el.onclick=()=>attemptPlay(i);
-
-    handEl.appendChild(el);
-  });
 }
+
+
+/* =========================================================
+   LOBBY
+   ========================================================= */
 
 function renderLobby(){
 
   lobbyPlayers.innerHTML="";
 
-  if(!state) return;
+  if(!state){
+    return;
+  }
 
-  state.players.forEach((p,i)=>{
 
-    const div=document.createElement("div");
-    div.className="player";
+  state.players.forEach(
+    p=>{
 
-    div.innerHTML=
-      "<strong>"+escapeHTML(p.name)+"</strong><br>"+
-      (p.bot?"🤖 Bot":"👤 Player");
+      const div=
+        document.createElement(
+          "div"
+        );
 
-    lobbyPlayers.appendChild(div);
-  });
+      div.className="player";
+
+      div.innerHTML=
+        "<strong>"+
+        escapeHTML(p.name)+
+        "</strong><br>"+
+        (
+          p.bot
+          ?"🤖 Bot"
+          :"👤 Player"
+        );
+
+      lobbyPlayers.appendChild(
+        div
+      );
+
+    }
+  );
+
 }
 
 
 /* =========================================================
-   PLAYING CARDS
+   PLAY
    ========================================================= */
 
 function attemptPlay(index){
 
-  if(!state || !state.started) return;
-
-  if(state.turn!==myPlayerIndex){
-    illegalMove(myPlayerIndex);
+  if(
+    !state ||
+    !state.started
+  ){
     return;
   }
 
-  const me=state.players[myPlayerIndex];
 
-  if(!me || me.eliminated) return;
+  if(
+    state.turn!==myPlayerIndex
+  ){
+
+    illegalMove(
+      myPlayerIndex
+    );
+
+    return;
+  }
+
+
+  const me=
+    state.players[
+      myPlayerIndex
+    ];
+
+
+  if(!me || me.eliminated){
+    return;
+  }
+
 
   const c=me.hand[index];
 
-  if(!c) return;
 
-  if(!canPlay(c)){
-    illegalMove(myPlayerIndex);
+  if(!c){
     return;
   }
+
+
+  if(!canPlay(c)){
+
+    illegalMove(
+      myPlayerIndex
+    );
+
+    return;
+  }
+
 
   if(c.color==="wild"){
 
     pendingCardIndex=index;
-    pendingActionPlayer=myPlayerIndex;
 
-    colorOverlay.classList.remove("hidden");
+    pendingActionPlayer=
+      myPlayerIndex;
+
+    colorOverlay.classList.remove(
+      "hidden"
+    );
+
     return;
+
   }
 
-  sendPlay(index,null);
+
+  sendPlay(
+    index,
+    null
+  );
+
 }
+
 
 function chooseColor(color){
 
-  colorOverlay.classList.add("hidden");
+  colorOverlay.classList.add(
+    "hidden"
+  );
 
-  if(pendingCardIndex===null) return;
 
-  sendPlay(pendingCardIndex,color);
+  if(
+    pendingCardIndex===null
+  ){
+    return;
+  }
+
+
+  sendPlay(
+    pendingCardIndex,
+    color
+  );
+
 
   pendingCardIndex=null;
   pendingActionPlayer=null;
 }
 
-function sendPlay(index,color){
 
-  if(mode==="online" && !isHost){
+function sendPlay(
+  index,
+  color
+){
 
-    if(hostConnection && hostConnection.open){
+  if(
+    mode==="online" &&
+    !isHost
+  ){
+
+    if(
+      hostConnection &&
+      hostConnection.open
+    ){
 
       hostConnection.send({
+
         type:"ACTION",
+
         action:{
           type:"play",
           index:index,
           color:color
         }
+
       });
 
     }
@@ -1069,159 +2045,409 @@ function sendPlay(index,color){
     return;
   }
 
-  playCard(myPlayerIndex,index,color);
-}
 
-function playCard(index,cardIndex,chosenColor){
+  playCard(
+    myPlayerIndex,
+    index,
+    color
+  );
 
-  if(!state || !state.started) return;
-
-  if(state.turn!==index){
-    illegalMove(index);
-    return;
-  }
-
-  const p=state.players[index];
-
-  if(!p || p.eliminated){
-    return;
-  }
-
-  const c=p.hand[cardIndex];
-
-  if(!c){
-    illegalMove(index);
-    return;
-  }
-
-  if(!canPlay(c)){
-    illegalMove(index);
-    return;
-  }
-
-  p.hand.splice(cardIndex,1);
-  state.discard.push(c);
-
-  if(c.color==="wild"){
-    state.currentColor=chosenColor || randomColor();
-  }else{
-    state.currentColor=c.color;
-  }
-
-  state.lastMessage=p.name+" played "+cardText(c)+".";
-
-  /*
-    Special cards.
-  */
-
-  if(c.type==="reverse"){
-
-    if(state.players.filter(x=>!x.eliminated).length===2){
-      state.turn=nextIndex(state,index);
-    }else{
-      state.direction*=-1;
-      state.turn=nextIndex(state,index);
-    }
-
-  }else if(c.type==="skip"){
-
-    state.turn=nextIndex(state,nextIndex(state,index));
-
-  }else if(c.type==="+2"){
-
-    givePenaltyCards(nextIndex(state,index),2);
-    state.turn=nextIndex(state,index);
-
-  }else if(c.type==="+4"){
-
-    givePenaltyCards(nextIndex(state,index),4);
-    state.turn=nextIndex(state,index);
-
-  }else if(c.type==="+6"){
-
-    givePenaltyCards(nextIndex(state,index),6);
-    state.turn=nextIndex(state,index);
-
-  }else if(c.type==="+10"){
-
-    givePenaltyCards(nextIndex(state,index),10);
-    state.turn=nextIndex(state,index);
-
-  }else{
-
-    state.turn=nextIndex(state,index);
-  }
-
-  if(p.hand.length===0){
-
-    state.winner=index;
-    state.lastMessage=p.name+" wins!";
-
-    finishAction();
-    showResultFromState();
-    return;
-  }
-
-  finishAction();
-}
-
-function givePenaltyCards(index,count){
-
-  const p=state.players[index];
-
-  if(!p) return;
-
-  for(let i=0;i<count;i++){
-    drawFromDeck(state,p);
-  }
-}
-
-function randomColor(){
-  return COLORS[Math.floor(Math.random()*COLORS.length)];
 }
 
 
 /* =========================================================
-   ILLEGAL MOVES / STRIKES
+   PLAY CARD
+   ========================================================= */
+
+function playCard(
+  index,
+  cardIndex,
+  chosenColor
+){
+
+  if(
+    !state ||
+    !state.started
+  ){
+    return;
+  }
+
+
+  if(
+    state.turn!==index
+  ){
+
+    illegalMove(index);
+
+    return;
+  }
+
+
+  const p=
+    state.players[index];
+
+
+  if(
+    !p ||
+    p.eliminated
+  ){
+    return;
+  }
+
+
+  const c=
+    p.hand[cardIndex];
+
+
+  if(!c){
+
+    illegalMove(index);
+
+    return;
+  }
+
+
+  if(!canPlay(c)){
+
+    illegalMove(index);
+
+    return;
+  }
+
+
+  p.hand.splice(
+    cardIndex,
+    1
+  );
+
+
+  state.discard.push(c);
+
+
+  if(c.color==="wild"){
+
+    state.currentColor=
+      chosenColor ||
+      randomColor();
+
+  }
+  else{
+
+    state.currentColor=
+      c.color;
+
+  }
+
+
+  state.lastMessage=
+    p.name+
+    " played "+
+    cardText(c)+
+    ".";
+
+
+  /*
+    SPECIAL CARDS
+  */
+
+  if(
+    c.type==="reverse"
+  ){
+
+    if(
+      state.players.filter(
+        x=>!x.eliminated
+      ).length===2
+    ){
+
+      state.turn=
+        nextIndex(
+          state,
+          index
+        );
+
+    }
+    else{
+
+      state.direction*=-1;
+
+      state.turn=
+        nextIndex(
+          state,
+          index
+        );
+
+    }
+
+  }
+
+
+  else if(
+    c.type==="skip"
+  ){
+
+    state.turn=
+      nextIndex(
+        state,
+        nextIndex(
+          state,
+          index
+        )
+      );
+
+  }
+
+
+  else if(
+    c.type==="+2"
+  ){
+
+    givePenaltyCards(
+      nextIndex(
+        state,
+        index
+      ),
+      2
+    );
+
+    state.turn=
+      nextIndex(
+        state,
+        index
+      );
+
+  }
+
+
+  else if(
+    c.type==="+4"
+  ){
+
+    givePenaltyCards(
+      nextIndex(
+        state,
+        index
+      ),
+      4
+    );
+
+    state.turn=
+      nextIndex(
+        state,
+        index
+      );
+
+  }
+
+
+  else if(
+    c.type==="+6"
+  ){
+
+    givePenaltyCards(
+      nextIndex(
+        state,
+        index
+      ),
+      6
+    );
+
+    state.turn=
+      nextIndex(
+        state,
+        index
+      );
+
+  }
+
+
+  else if(
+    c.type==="+10"
+  ){
+
+    givePenaltyCards(
+      nextIndex(
+        state,
+        index
+      ),
+      10
+    );
+
+    state.turn=
+      nextIndex(
+        state,
+        index
+      );
+
+  }
+
+
+  else{
+
+    state.turn=
+      nextIndex(
+        state,
+        index
+      );
+
+  }
+
+
+  /*
+    WIN
+  */
+
+  if(
+    p.hand.length===0
+  ){
+
+    state.winner=index;
+
+    state.lastMessage=
+      p.name+
+      " wins!";
+
+    finishAction();
+
+    showResultFromState();
+
+    return;
+
+  }
+
+
+  finishAction();
+
+}
+
+
+/* =========================================================
+   PENALTY
+   ========================================================= */
+
+function givePenaltyCards(
+  index,
+  count
+){
+
+  const p=
+    state.players[index];
+
+  if(!p){
+    return;
+  }
+
+
+  for(
+    let i=0;
+    i<count;
+    i++
+  ){
+
+    drawFromDeck(
+      state,
+      p
+    );
+
+  }
+
+}
+
+
+function randomColor(){
+
+  return COLORS[
+    Math.floor(
+      Math.random()*
+      COLORS.length
+    )
+  ];
+
+}
+
+
+/* =========================================================
+   ILLEGAL MOVES
    ========================================================= */
 
 function illegalMove(index){
 
-  if(!state || !state.started) return;
+  if(
+    !state ||
+    !state.started
+  ){
+    return;
+  }
 
-  const p=state.players[index];
 
-  if(!p || p.eliminated) return;
+  const p=
+    state.players[index];
+
+
+  if(
+    !p ||
+    p.eliminated
+  ){
+    return;
+  }
+
 
   p.illegalMoves++;
 
-  state.lastMessage=
-    p.name+" attempted an illegal move — Strike "+
-    p.illegalMoves+"/3.";
 
-  if(p.illegalMoves>=MAX_ILLEGAL){
+  state.lastMessage=
+    p.name+
+    " attempted an illegal move — Strike "+
+    p.illegalMoves+
+    "/3.";
+
+
+  if(
+    p.illegalMoves>=MAX_ILLEGAL
+  ){
 
     p.eliminated=true;
+
     state.loser=index;
 
-    state.turn=nextIndex(state,index);
+    state.turn=
+      nextIndex(
+        state,
+        index
+      );
 
-    if(index===myPlayerIndex){
+
+    if(
+      index===myPlayerIndex
+    ){
+
       penaltyMessage.textContent=
         "❌ You received Strike 3 and were eliminated.";
+
     }
 
+
     finishAction();
+
     showResultFromState();
 
-  }else{
+  }
+  else{
 
     renderState();
 
-    if(mode==="online" && isHost){
+
+    if(
+      mode==="online" &&
+      isHost
+    ){
+
       broadcastState();
+
     }
+
   }
+
 }
 
 
@@ -1231,31 +2457,71 @@ function illegalMove(index){
 
 function drawCard(){
 
-  if(!state || !state.started) return;
+  if(
+    !state ||
+    !state.started
+  ){
+    return;
+  }
 
-  if(state.turn!==myPlayerIndex){
 
-    if(mode==="online" && !isHost){
+  if(
+    state.turn!==myPlayerIndex
+  ){
 
-      hostConnection?.send({
-        type:"ACTION",
-        action:{type:"draw"}
-      });
+    if(
+      mode==="online" &&
+      !isHost
+    ){
 
-    }else{
-      illegalMove(myPlayerIndex);
+      if(
+        hostConnection &&
+        hostConnection.open
+      ){
+
+        hostConnection.send({
+
+          type:"ACTION",
+
+          action:{
+            type:"draw"
+          }
+
+        });
+
+      }
+
+    }
+    else{
+
+      illegalMove(
+        myPlayerIndex
+      );
+
     }
 
     return;
   }
 
-  if(mode==="online" && !isHost){
 
-    if(hostConnection && hostConnection.open){
+  if(
+    mode==="online" &&
+    !isHost
+  ){
+
+    if(
+      hostConnection &&
+      hostConnection.open
+    ){
 
       hostConnection.send({
+
         type:"ACTION",
-        action:{type:"draw"}
+
+        action:{
+          type:"draw"
+        }
+
       });
 
     }
@@ -1263,17 +2529,33 @@ function drawCard(){
     return;
   }
 
-  const p=state.players[myPlayerIndex];
 
-  if(!p) return;
+  const p=
+    state.players[
+      myPlayerIndex
+    ];
 
-  const c=drawFromDeck(state,p);
 
-  state.lastMessage=p.name+" drew a card.";
+  if(!p){
+    return;
+  }
+
+
+  drawFromDeck(
+    state,
+    p
+  );
+
+
+  state.lastMessage=
+    p.name+
+    " drew a card.";
+
 
   nextTurn();
 
   finishAction();
+
 }
 
 
@@ -1285,17 +2567,27 @@ function finishAction(){
 
   renderState();
 
-  if(mode==="online" && isHost){
+
+  if(
+    mode==="online" &&
+    isHost
+  ){
+
     broadcastState();
+
   }
+
 
   if(
     mode==="bots" &&
     state.winner===null &&
     state.loser===null
   ){
+
     botLoop();
+
   }
+
 }
 
 
@@ -1303,75 +2595,191 @@ function finishAction(){
    BOTS
    ========================================================= */
 
-function startBots(){
+function startBots(
+  botCount
+){
+
+  clearTimeout(botTimer);
 
   playerName=
-    prompt("Enter your name:",playerName) ||
+    prompt(
+      "Enter your name:",
+      playerName
+    ) ||
     playerName;
 
+
+  botCount=
+    Number(botCount);
+
+
+  if(
+    botCount<1 ||
+    botCount>3
+  ){
+    botCount=1;
+  }
+
+
   mode="bots";
+
   isHost=false;
 
   const players=[
-    makePlayer(playerName,false),
-    makePlayer("Bot 1",true),
-    makePlayer("Bot 2",true),
-    makePlayer("Bot 3",true)
+    makePlayer(
+      playerName,
+      false
+    )
   ];
 
+
+  for(
+    let i=1;
+    i<=botCount;
+    i++
+  ){
+
+    players.push(
+      makePlayer(
+        "Bot "+i,
+        true
+      )
+    );
+
+  }
+
+
   myPlayerIndex=0;
-  state=createGame(players);
+
+  state=
+    createGame(
+      players
+    );
+
 
   resultShown=false;
 
   renderState();
+
 }
+
 
 function botLoop(){
 
   clearTimeout(botTimer);
 
-  if(!state || state.winner!==null || state.loser!==null) return;
 
-  const p=state.players[state.turn];
+  if(
+    !state ||
+    state.winner!==null ||
+    state.loser!==null
+  ){
+    return;
+  }
 
-  if(!p || !p.bot) return;
 
-  botTimer=setTimeout(()=>{
+  const p=
+    state.players[
+      state.turn
+    ];
 
-    if(!state || state.winner!==null || state.loser!==null) return;
 
-    const choices=[];
+  if(
+    !p ||
+    !p.bot
+  ){
+    return;
+  }
 
-    p.hand.forEach((c,i)=>{
-      if(canPlay(c)) choices.push({c,i});
-    });
 
-    if(choices.length){
+  botTimer=
+    setTimeout(
+      ()=>{
 
-      const choice=
-        choices[Math.floor(Math.random()*choices.length)];
+        if(
+          !state ||
+          state.winner!==null ||
+          state.loser!==null
+        ){
+          return;
+        }
 
-      let color=null;
 
-      if(choice.c.color==="wild"){
-        color=randomColor();
-      }
+        const choices=[];
 
-      playCard(state.turn,choice.i,color);
 
-    }else{
+        p.hand.forEach(
+          (c,i)=>{
 
-      drawFromDeck(state,p);
+            if(
+              canPlay(c)
+            ){
 
-      state.lastMessage=p.name+" drew a card.";
+              choices.push({
+                c:c,
+                i:i
+              });
 
-      nextTurn();
+            }
 
-      finishAction();
-    }
+          }
+        );
 
-  },700);
+
+        if(choices.length){
+
+          const choice=
+            choices[
+              Math.floor(
+                Math.random()*
+                choices.length
+              )
+            ];
+
+
+          let color=null;
+
+
+          if(
+            choice.c.color==="wild"
+          ){
+
+            color=
+              randomColor();
+
+          }
+
+
+          playCard(
+            state.turn,
+            choice.i,
+            color
+          );
+
+        }
+        else{
+
+          drawFromDeck(
+            state,
+            p
+          );
+
+
+          state.lastMessage=
+            p.name+
+            " drew a card.";
+
+
+          nextTurn();
+
+          finishAction();
+
+        }
+
+      },
+      700
+    );
+
 }
 
 
@@ -1382,348 +2790,693 @@ function botLoop(){
 function startLocal(){
 
   mode="local";
+
   isHost=false;
 
+
   const count=
-    Number(document.getElementById("localPlayers").value);
+    Number(
+      document.getElementById(
+        "localPlayers"
+      ).value
+    );
+
 
   const players=[
-    makePlayer(playerName,false)
+    makePlayer(
+      playerName,
+      false
+    )
   ];
 
-  for(let i=1;i<count;i++){
+
+  for(
+    let i=1;
+    i<count;
+    i++
+  ){
+
     players.push(
       makePlayer(
-        prompt("Name for Player "+(i+1)+":","Player "+(i+1)) ||
+        prompt(
+          "Name for Player "+
+          (i+1)+":",
+          "Player "+(i+1)
+        ) ||
         "Player "+(i+1),
         false
       )
     );
+
   }
 
+
   myPlayerIndex=0;
-  state=createGame(players);
+
+  state=
+    createGame(
+      players
+    );
+
 
   resultShown=false;
 
   renderState();
+
 }
 
 
 /* =========================================================
-   ONLINE — HOST
+   ONLINE HOST
    ========================================================= */
 
 function randomRoomCode(){
 
   let code="";
 
-  for(let i=0;i<4;i++){
-    code+=Math.floor(Math.random()*10);
+
+  for(
+    let i=0;
+    i<4;
+    i++
+  ){
+
+    code+=
+      Math.floor(
+        Math.random()*10
+      );
+
   }
+
 
   return code;
 }
 
+
 function createLobby(){
 
-  const n=document.getElementById("hostName").value.trim();
+  const n=
+    document.getElementById(
+      "hostName"
+    ).value.trim();
+
 
   if(n){
-    playerName=n.slice(0,16);
-  }else{
-    playerName="Host";
+
+    playerName=
+      n.slice(0,16);
+
   }
+  else{
+
+    playerName="Host";
+
+  }
+
 
   closePeer();
 
+
   mode="online";
+
   isHost=true;
-  roomCode=randomRoomCode();
+
+  roomCode=
+    randomRoomCode();
+
   myPlayerIndex=0;
+
   connections={};
 
-  document.getElementById("onlineStatus").textContent=
+
+  document.getElementById(
+    "onlineStatus"
+  ).textContent=
     "Creating lobby...";
 
-  try{
-    peer=new Peer("qpg-"+roomCode);
-  }catch(e){
 
-    document.getElementById("onlineStatus").textContent=
+  try{
+
+    peer=
+      new Peer(
+        "qpg-"+roomCode
+      );
+
+  }
+  catch(e){
+
+    document.getElementById(
+      "onlineStatus"
+    ).textContent=
       "Could not create lobby.";
 
     return;
+
   }
+
 
   /*
-    IMPORTANT:
-    Register connection handler immediately.
-    This fixes the old synchronization problem.
+    CONNECTION HANDLER IS REGISTERED
+    IMMEDIATELY.
   */
 
-  peer.on("connection",conn=>{
-    setupHostConnection(conn);
-  });
-
-  peer.on("open",()=>{
-
-    state={
-      players:[
-        makePlayer(playerName,false)
-      ],
-      deck:[],
-      discard:[],
-      turn:0,
-      direction:1,
-      currentColor:null,
-      winner:null,
-      loser:null,
-      started:false,
-      lastMessage:"Waiting for players..."
-    };
-
-    hideAll();
-    lobbyPanel.classList.remove("hidden");
-
-    document.getElementById("hostCode").textContent=roomCode;
-
-    document.getElementById("hostControls")
-      .classList.remove("hidden");
-
-    document.getElementById("joinerControls")
-      .classList.add("hidden");
-
-    document.getElementById("lobbyStatus").textContent=
-      "Waiting for players...";
-
-    renderLobby();
-  });
-
-  peer.on("error",err=>{
-
-    console.error("Peer error:",err);
-
-    if(err.type==="unavailable-id"){
-
-      document.getElementById("onlineStatus").textContent=
-        "Room code collision. Creating another room...";
-
-      setTimeout(()=>{
-        createLobby();
-      },500);
-
-    }else{
-
-      document.getElementById("onlineStatus").textContent=
-        "Connection error: "+err.type;
+  peer.on(
+    "connection",
+    conn=>{
+      setupHostConnection(conn);
     }
-  });
-}
+  );
 
-function setupHostConnection(conn){
 
-  if(!conn) return;
+  peer.on(
+    "open",
+    ()=>{
 
-  /*
-    Attach data/close/error handlers BEFORE open.
-    This is another important synchronization fix.
-  */
+      state={
 
-  conn.playerIndex=-1;
+        players:[
+          makePlayer(
+            playerName,
+            false
+          )
+        ],
 
-  conn.on("data",data=>{
-    handleClientMessage(conn,data);
-  });
+        deck:[],
+        discard:[],
 
-  conn.on("close",()=>{
-    handleHostDisconnect(conn);
-  });
+        turn:0,
 
-  conn.on("error",err=>{
-    console.warn("Connection error:",err);
-  });
+        direction:1,
 
-  conn.on("open",()=>{
+        currentColor:null,
 
-    if(!state) return;
+        winner:null,
 
-    if(state.started){
+        loser:null,
 
-      conn.send({
-        type:"FULL",
-        message:"The game has already started."
-      });
+        started:false,
 
-      conn.close();
-      return;
+        lastMessage:
+          "Waiting for players..."
+
+      };
+
+
+      hideAll();
+
+      lobbyPanel.classList.remove(
+        "hidden"
+      );
+
+
+      document.getElementById(
+        "hostCode"
+      ).textContent=
+        roomCode;
+
+
+      document.getElementById(
+        "hostControls"
+      ).classList.remove(
+        "hidden"
+      );
+
+
+      document.getElementById(
+        "joinerControls"
+      ).classList.add(
+        "hidden"
+      );
+
+
+      document.getElementById(
+        "lobbyStatus"
+      ).textContent=
+        "Waiting for players...";
+
+
+      renderLobby();
+
     }
+  );
 
-    if(state.players.length>=MAX_PLAYERS){
 
-      conn.send({
-        type:"FULL",
-        message:"Lobby is full."
-      });
+  peer.on(
+    "error",
+    err=>{
 
-      conn.close();
-      return;
-    }
+      console.error(
+        "Peer error:",
+        err
+      );
 
-    const index=state.players.length;
 
-    conn.playerIndex=index;
+      if(
+        err.type===
+        "unavailable-id"
+      ){
 
-    connections[conn.peer]=conn;
+        document.getElementById(
+          "onlineStatus"
+        ).textContent=
+          "Room code collision. Creating another room...";
 
-    state.players.push(
-      makePlayer("Player "+(index+1),false)
-    );
 
-    /*
-      Send assignment FIRST.
-      The client now knows its player index.
-    */
+        setTimeout(
+          ()=>{
+            createLobby();
+          },
+          500
+        );
 
-    try{
-
-      conn.send({
-        type:"ASSIGN",
-        index:index,
-        room:roomCode
-      });
-
-      conn.send({
-        type:"LOBBY",
-        players:lobbyData()
-      });
-
-    }catch(e){
-      console.error(e);
-    }
-
-    broadcastLobby();
-
-    document.getElementById("lobbyStatus").textContent=
-      state.players.length+" players connected.";
-  });
-}
-
-function handleClientMessage(conn,data){
-
-  if(!data || !state) return;
-
-  const index=conn.playerIndex;
-
-  if(index===undefined || index<0) return;
-
-  if(data.type==="NAME"){
-
-    const name=
-      String(data.name || "Player")
-      .slice(0,16);
-
-    if(state.players[index]){
-      state.players[index].name=name;
-    }
-
-    broadcastLobby();
-
-    return;
-  }
-
-  if(data.type==="ACTION"){
-
-    if(!state.started) return;
-
-    handleHostAction(index,data.action);
-  }
-}
-
-function handleHostAction(index,action){
-
-  if(!state || !state.started || !action) return;
-
-  if(action.type==="play"){
-
-    playCard(
-      index,
-      Number(action.index),
-      action.color || null
-    );
-
-    return;
-  }
-
-  if(action.type==="draw"){
-
-    if(state.turn!==index){
-
-      illegalMove(index);
-      return;
-    }
-
-    const p=state.players[index];
-
-    if(!p) return;
-
-    drawFromDeck(state,p);
-
-    state.lastMessage=p.name+" drew a card.";
-
-    nextTurn();
-
-    finishAction();
-  }
-}
-
-function handleHostDisconnect(conn){
-
-  const index=conn.playerIndex;
-
-  delete connections[conn.peer];
-
-  if(index===undefined || index<0 || !state) return;
-
-  /*
-    Before the game starts:
-    remove the player and re-index connections.
-  */
-
-  if(!state.started){
-
-    state.players.splice(index,1);
-
-    Object.values(connections).forEach(c=>{
-      if(c.playerIndex>index){
-        c.playerIndex--;
       }
-    });
+      else{
 
-    broadcastLobby();
+        document.getElementById(
+          "onlineStatus"
+        ).textContent=
+          "Connection error: "+
+          err.type;
 
-    return;
-  }
+      }
 
-  /*
-    During a game:
-    mark player disconnected.
-  */
-
-  if(state.players[index]){
-    state.players[index].connected=false;
-
-    if(state.turn===index){
-      nextTurn();
     }
+  );
 
-    broadcastState();
-  }
 }
 
 
 /* =========================================================
-   ONLINE — START
+   HOST CONNECTION
+   ========================================================= */
+
+function setupHostConnection(
+  conn
+){
+
+  if(!conn){
+    return;
+  }
+
+
+  /*
+    Attach handlers BEFORE open.
+  */
+
+  conn.playerIndex=-1;
+
+
+  conn.on(
+    "data",
+    data=>{
+      handleClientMessage(
+        conn,
+        data
+      );
+    }
+  );
+
+
+  conn.on(
+    "close",
+    ()=>{
+      handleHostDisconnect(
+        conn
+      );
+    }
+  );
+
+
+  conn.on(
+    "error",
+    err=>{
+      console.warn(
+        "Connection error:",
+        err
+      );
+    }
+  );
+
+
+  conn.on(
+    "open",
+    ()=>{
+
+      if(!state){
+        return;
+      }
+
+
+      if(state.started){
+
+        conn.send({
+
+          type:"FULL",
+
+          message:
+            "The game has already started."
+
+        });
+
+        conn.close();
+
+        return;
+      }
+
+
+      if(
+        state.players.length>=
+        MAX_PLAYERS
+      ){
+
+        conn.send({
+
+          type:"FULL",
+
+          message:
+            "Lobby is full."
+
+        });
+
+        conn.close();
+
+        return;
+      }
+
+
+      const index=
+        state.players.length;
+
+
+      conn.playerIndex=index;
+
+
+      connections[
+        conn.peer
+      ]=conn;
+
+
+      state.players.push(
+        makePlayer(
+          "Player "+(index+1),
+          false
+        )
+      );
+
+
+      /*
+        ASSIGN INDEX FIRST.
+      */
+
+      try{
+
+        conn.send({
+
+          type:"ASSIGN",
+
+          index:index,
+
+          room:roomCode
+
+        });
+
+
+        conn.send({
+
+          type:"LOBBY",
+
+          players:lobbyData()
+
+        });
+
+      }
+      catch(e){
+
+        console.error(e);
+
+      }
+
+
+      broadcastLobby();
+
+
+      document.getElementById(
+        "lobbyStatus"
+      ).textContent=
+        state.players.length+
+        " players connected.";
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   CLIENT MESSAGE
+   ========================================================= */
+
+function handleClientMessage(
+  conn,
+  data
+){
+
+  if(
+    !data ||
+    !state
+  ){
+    return;
+  }
+
+
+  const index=
+    conn.playerIndex;
+
+
+  if(
+    index===undefined ||
+    index<0
+  ){
+    return;
+  }
+
+
+  if(
+    data.type==="NAME"
+  ){
+
+    const name=
+      String(
+        data.name ||
+        "Player"
+      ).slice(0,16);
+
+
+    if(
+      state.players[index]
+    ){
+
+      state.players[index].name=
+        name;
+
+    }
+
+
+    broadcastLobby();
+
+    return;
+  }
+
+
+  if(
+    data.type==="ACTION"
+  ){
+
+    if(!state.started){
+      return;
+    }
+
+
+    handleHostAction(
+      index,
+      data.action
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   HOST ACTION
+   ========================================================= */
+
+function handleHostAction(
+  index,
+  action
+){
+
+  if(
+    !state ||
+    !state.started ||
+    !action
+  ){
+    return;
+  }
+
+
+  if(
+    action.type==="play"
+  ){
+
+    playCard(
+      index,
+      Number(action.index),
+      action.color ||
+      null
+    );
+
+    return;
+  }
+
+
+  if(
+    action.type==="draw"
+  ){
+
+    if(
+      state.turn!==index
+    ){
+
+      illegalMove(index);
+
+      return;
+    }
+
+
+    const p=
+      state.players[index];
+
+
+    if(!p){
+      return;
+    }
+
+
+    drawFromDeck(
+      state,
+      p
+    );
+
+
+    state.lastMessage=
+      p.name+
+      " drew a card.";
+
+
+    nextTurn();
+
+    finishAction();
+
+  }
+
+}
+
+
+/* =========================================================
+   DISCONNECT
+   ========================================================= */
+
+function handleHostDisconnect(
+  conn
+){
+
+  const index=
+    conn.playerIndex;
+
+
+  delete connections[
+    conn.peer
+  ];
+
+
+  if(
+    index===undefined ||
+    index<0 ||
+    !state
+  ){
+    return;
+  }
+
+
+  /*
+    BEFORE GAME:
+    Remove player and re-index.
+  */
+
+  if(!state.started){
+
+    state.players.splice(
+      index,
+      1
+    );
+
+
+    Object.values(
+      connections
+    ).forEach(
+      c=>{
+
+        if(
+          c.playerIndex>index
+        ){
+
+          c.playerIndex--;
+
+        }
+
+      }
+    );
+
+
+    broadcastLobby();
+
+    return;
+  }
+
+
+  /*
+    DURING GAME:
+    Mark disconnected.
+  */
+
+  if(
+    state.players[index]
+  ){
+
+    state.players[
+      index
+    ].connected=false;
+
+
+    if(
+      state.turn===index
+    ){
+
+      nextTurn();
+
+    }
+
+
+    broadcastState();
+
+  }
+
+}
+
+
+/* =========================================================
+   HOST START GAME
    ========================================================= */
 
 window.hostStartGame=function(){
@@ -1732,307 +3485,575 @@ window.hostStartGame=function(){
     return;
   }
 
+
   if(!state){
     return;
   }
 
-  if(state.players.length<2){
 
-    alert("You need at least one other player.");
+  if(
+    state.players.length<2
+  ){
+
+    alert(
+      "You need at least one other player."
+    );
 
     return;
   }
+
 
   const connectedPlayers=
-    state.players.filter(p=>p.connected!==false);
+    state.players.filter(
+      p=>
+        p.connected!==false
+    );
 
-  if(connectedPlayers.length<2){
 
-    alert("You need at least one connected player.");
+  if(
+    connectedPlayers.length<2
+  ){
+
+    alert(
+      "You need at least one connected player."
+    );
 
     return;
   }
 
+
   /*
-    Rebuild using only currently connected players.
-    This keeps indexes consistent.
+    Create the actual game.
   */
 
-  state=createGame(
-    connectedPlayers.map(p=>({
-      name:p.name,
-      bot:false,
-      connected:true
-    }))
-  );
+  state=
+    createGame(
+      connectedPlayers.map(
+        p=>({
+
+          name:p.name,
+
+          bot:false,
+
+          connected:true
+
+        })
+      )
+    );
+
 
   myPlayerIndex=0;
+
   resultShown=false;
 
   state.started=true;
-  state.lastMessage="Game started!";
+
+  state.lastMessage=
+    "Game started!";
+
 
   /*
-    Render first, then broadcast.
-    This ensures host and clients receive exactly
-    the same started state.
+    RENDER FIRST.
+    THEN SEND STATE.
   */
 
   renderState();
+
   broadcastState();
+
 };
 
 
 /* =========================================================
-   ONLINE — BROADCAST
+   BROADCAST LOBBY
    ========================================================= */
 
 function lobbyData(){
 
-  if(!state) return [];
+  if(!state){
+    return [];
+  }
 
-  return state.players.map(p=>({
-    name:p.name,
-    bot:!!p.bot,
-    connected:p.connected!==false
-  }));
+
+  return state.players.map(
+    p=>({
+
+      name:p.name,
+
+      bot:!!p.bot,
+
+      connected:
+        p.connected!==false
+
+    })
+  );
+
 }
+
 
 function broadcastLobby(){
 
-  if(!isHost || !state) return;
+  if(
+    !isHost ||
+    !state
+  ){
+    return;
+  }
+
 
   const packet={
+
     type:"LOBBY",
+
     players:lobbyData()
+
   };
 
-  Object.values(connections).forEach(conn=>{
 
-    if(conn && conn.open){
+  Object.values(
+    connections
+  ).forEach(
+    conn=>{
 
-      try{
-        conn.send(packet);
-      }catch(e){
-        console.warn(e);
+      if(
+        conn &&
+        conn.open
+      ){
+
+        try{
+
+          conn.send(
+            packet
+          );
+
+        }
+        catch(e){
+
+          console.warn(e);
+
+        }
+
       }
 
     }
-  });
+  );
+
 
   renderLobby();
-}
 
-function broadcastState(){
-
-  if(!isHost || !state) return;
-
-  const packet={
-    type:"STATE",
-    state:state
-  };
-
-  Object.values(connections).forEach(conn=>{
-
-    if(conn && conn.open){
-
-      try{
-        conn.send(packet);
-      }catch(e){
-        console.warn(e);
-      }
-
-    }
-  });
-
-  renderState();
 }
 
 
 /* =========================================================
-   ONLINE — JOIN
+   BROADCAST STATE
+   ========================================================= */
+
+function broadcastState(){
+
+  if(
+    !isHost ||
+    !state
+  ){
+    return;
+  }
+
+
+  const packet={
+
+    type:"STATE",
+
+    state:state
+
+  };
+
+
+  Object.values(
+    connections
+  ).forEach(
+    conn=>{
+
+      if(
+        conn &&
+        conn.open
+      ){
+
+        try{
+
+          conn.send(
+            packet
+          );
+
+        }
+        catch(e){
+
+          console.warn(e);
+
+        }
+
+      }
+
+    }
+  );
+
+
+  renderState();
+
+}
+
+
+/* =========================================================
+   JOIN
    ========================================================= */
 
 function joinLobby(){
 
-  const n=document.getElementById("joinName").value.trim();
+  const n=
+    document.getElementById(
+      "joinName"
+    ).value.trim();
+
 
   if(n){
-    playerName=n.slice(0,16);
-  }else{
+
+    playerName=
+      n.slice(0,16);
+
+  }
+  else{
+
     playerName="Player";
+
   }
 
+
   const code=
-    document.getElementById("joinCode")
-    .value.trim()
-    .toUpperCase();
+    document.getElementById(
+      "joinCode"
+    ).value
+      .trim()
+      .toUpperCase();
 
-  if(!/^\d{4}$/.test(code)){
 
-    document.getElementById("onlineStatus").textContent=
+  if(
+    !/^\d{4}$/.test(code)
+  ){
+
+    document.getElementById(
+      "onlineStatus"
+    ).textContent=
       "Enter a valid 4-digit room code.";
 
     return;
   }
 
+
   closePeer();
 
+
   mode="online";
+
   isHost=false;
+
   roomCode=code;
+
   myPlayerIndex=0;
 
-  document.getElementById("onlineStatus").textContent=
+
+  document.getElementById(
+    "onlineStatus"
+  ).textContent=
     "Connecting to room...";
+
 
   peer=new Peer();
 
-  peer.on("open",()=>{
 
-    hostConnection=
-      peer.connect("qpg-"+code,{reliable:true});
+  peer.on(
+    "open",
+    ()=>{
 
-    /*
-      Attach data handler immediately.
-      Do NOT wait for open.
-    */
+      hostConnection=
+        peer.connect(
+          "qpg-"+code,
+          {
+            reliable:true
+          }
+        );
 
-    hostConnection.on("data",data=>{
-      handleHostMessage(data);
-    });
 
-    hostConnection.on("close",()=>{
-      alert("The host disconnected.");
-      goHome();
-    });
+      /*
+        Attach data handler immediately.
+      */
 
-    hostConnection.on("error",err=>{
-      console.error(err);
-    });
+      hostConnection.on(
+        "data",
+        data=>{
+          handleHostMessage(
+            data
+          );
+        }
+      );
 
-    hostConnection.on("open",()=>{
 
-      hostConnection.send({
-        type:"NAME",
-        name:playerName
-      });
+      hostConnection.on(
+        "close",
+        ()=>{
 
-      hideAll();
-      lobbyPanel.classList.remove("hidden");
+          alert(
+            "The host disconnected."
+          );
 
-      document.getElementById("hostCode").textContent=code;
+          goHome();
 
-      document.getElementById("hostControls")
-        .classList.add("hidden");
+        }
+      );
 
-      document.getElementById("joinerControls")
-        .classList.remove("hidden");
 
-      document.getElementById("lobbyStatus").textContent=
-        "Connected to host. Waiting for game...";
+      hostConnection.on(
+        "error",
+        err=>{
+          console.error(err);
+        }
+      );
 
-    });
-  });
 
-  peer.on("error",err=>{
+      hostConnection.on(
+        "open",
+        ()=>{
 
-    console.error("Join error:",err);
+          hostConnection.send({
 
-    document.getElementById("onlineStatus").textContent=
-      "Could not join room: "+err.type;
-  });
+            type:"NAME",
+
+            name:playerName
+
+          });
+
+
+          hideAll();
+
+          lobbyPanel.classList.remove(
+            "hidden"
+          );
+
+
+          document.getElementById(
+            "hostCode"
+          ).textContent=
+            code;
+
+
+          document.getElementById(
+            "hostControls"
+          ).classList.add(
+            "hidden"
+          );
+
+
+          document.getElementById(
+            "joinerControls"
+          ).classList.remove(
+            "hidden"
+          );
+
+
+          document.getElementById(
+            "lobbyStatus"
+          ).textContent=
+            "Connected to host. Waiting for game...";
+
+        }
+      );
+
+    }
+  );
+
+
+  peer.on(
+    "error",
+    err=>{
+
+      console.error(
+        "Join error:",
+        err
+      );
+
+
+      document.getElementById(
+        "onlineStatus"
+      ).textContent=
+        "Could not join room: "+
+        err.type;
+
+    }
+  );
+
 }
 
-function handleHostMessage(data){
 
-  if(!data) return;
+/* =========================================================
+   HOST MESSAGE
+   ========================================================= */
 
-  if(data.type==="FULL"){
+function handleHostMessage(
+  data
+){
 
-    alert(data.message || "Lobby unavailable.");
+  if(!data){
+    return;
+  }
+
+
+  if(
+    data.type==="FULL"
+  ){
+
+    alert(
+      data.message ||
+      "Lobby unavailable."
+    );
+
     goHome();
-    return;
-  }
-
-  if(data.type==="ASSIGN"){
-
-    myPlayerIndex=Number(data.index);
-
-    roomCode=data.room || roomCode;
 
     return;
   }
 
-  if(data.type==="LOBBY"){
 
-    renderRemoteLobby(data.players);
+  if(
+    data.type==="ASSIGN"
+  ){
+
+    myPlayerIndex=
+      Number(
+        data.index
+      );
+
+
+    roomCode=
+      data.room ||
+      roomCode;
+
+
+    return;
+  }
+
+
+  if(
+    data.type==="LOBBY"
+  ){
+
+    renderRemoteLobby(
+      data.players
+    );
+
+    return;
+  }
+
+
+  if(
+    data.type==="STATE"
+  ){
 
     /*
-      If state has not started yet, keep showing lobby.
-    */
+      IMPORTANT:
+      The host's STATE packet is
+      authoritative.
 
-    return;
-  }
-
-  if(data.type==="STATE"){
-
-    /*
-      MAIN FIX:
-      Accept the authoritative host state immediately.
-      Do NOT require a previous lobby packet.
+      We do not require a LOBBY
+      packet before accepting it.
     */
 
     state=data.state;
 
     resultShown=false;
 
-    if(state && state.started){
+
+    if(
+      state &&
+      state.started
+    ){
 
       hideAll();
-      gamePanel.classList.remove("hidden");
+
+      gamePanel.classList.remove(
+        "hidden"
+      );
 
       renderState();
 
-    }else{
+    }
+    else{
 
       hideAll();
-      lobbyPanel.classList.remove("hidden");
+
+      lobbyPanel.classList.remove(
+        "hidden"
+      );
+
       renderLobby();
+
     }
 
     return;
   }
+
 }
 
-function renderRemoteLobby(players){
+
+function renderRemoteLobby(
+  players
+){
 
   lobbyPlayers.innerHTML="";
 
-  if(!players) return;
 
-  players.forEach((p,i)=>{
+  if(!players){
+    return;
+  }
 
-    const div=document.createElement("div");
 
-    div.className="player";
+  players.forEach(
+    p=>{
 
-    div.innerHTML=
-      "<strong>"+escapeHTML(p.name)+"</strong><br>"+
-      "👤 Player";
+      const div=
+        document.createElement(
+          "div"
+        );
 
-    lobbyPlayers.appendChild(div);
-  });
+      div.className="player";
+
+
+      div.innerHTML=
+        "<strong>"+
+        escapeHTML(p.name)+
+        "</strong><br>"+
+        "👤 Player";
+
+
+      lobbyPlayers.appendChild(
+        div
+      );
+
+    }
+  );
+
 }
+
+
+/* =========================================================
+   LEAVE ONLINE
+   ========================================================= */
 
 function leaveOnline(){
 
   closePeer();
 
   mode=null;
+
   state=null;
 
   goHome();
+
 }
 
 
@@ -2042,84 +4063,169 @@ function leaveOnline(){
 
 function showResultFromState(){
 
-  if(!state) return;
+  if(!state){
+    return;
+  }
 
-  if(resultShown) return;
+
+  if(resultShown){
+    return;
+  }
+
 
   resultShown=true;
 
-  let title="Game Over";
+
+  let title=
+    "Game Over";
+
   let text="";
 
-  if(state.winner!==null){
 
-    const winner=state.players[state.winner];
+  if(
+    state.winner!==null
+  ){
 
-    title="🏆 "+winner.name+" Wins!";
+    const winner=
+      state.players[
+        state.winner
+      ];
+
+
+    title=
+      "🏆 "+
+      winner.name+
+      " Wins!";
+
+
     text=
       winner.name+
       " played all their cards and won the game.";
+
   }
 
-  if(state.loser!==null){
 
-    const loser=state.players[state.loser];
+  if(
+    state.loser!==null
+  ){
 
-    title="❌ "+loser.name+" Eliminated";
+    const loser=
+      state.players[
+        state.loser
+      ];
+
+
+    title=
+      "❌ "+
+      loser.name+
+      " Eliminated";
+
+
     text=
       loser.name+
       " reached 3 illegal moves and was eliminated.";
+
   }
 
-  document.getElementById("resultTitle").textContent=title;
-  document.getElementById("resultText").textContent=text;
 
-  resultOverlay.classList.remove("hidden");
+  document.getElementById(
+    "resultTitle"
+  ).textContent=
+    title;
+
+
+  document.getElementById(
+    "resultText"
+  ).textContent=
+    text;
+
+
+  resultOverlay.classList.remove(
+    "hidden"
+  );
+
 }
+
 
 function newGame(){
 
-  resultOverlay.classList.add("hidden");
+  resultOverlay.classList.add(
+    "hidden"
+  );
+
   resultShown=false;
 
-  if(mode==="bots"){
-    startBots();
+
+  if(
+    mode==="bots"
+  ){
+
+    showBotSetup();
+
     return;
   }
 
-  if(mode==="local"){
+
+  if(
+    mode==="local"
+  ){
+
     startLocal();
+
     return;
   }
 
-  if(mode==="online"){
+
+  if(
+    mode==="online"
+  ){
 
     if(isHost){
 
       if(state){
 
-        state=createGame(
-          state.players.map(p=>({
-            name:p.name,
-            bot:false,
-            connected:p.connected!==false
-          }))
-        );
+        state=
+          createGame(
+            state.players.map(
+              p=>({
+
+                name:p.name,
+
+                bot:false,
+
+                connected:
+                  p.connected!==false
+
+              })
+            )
+          );
+
 
         resultShown=false;
 
         broadcastState();
+
       }
 
-    }else{
+    }
+    else{
 
-      document.getElementById("lobbyStatus").textContent=
+      document.getElementById(
+        "lobbyStatus"
+      ).textContent=
         "Waiting for host to start another game.";
 
+
       hideAll();
-      lobbyPanel.classList.remove("hidden");
+
+      lobbyPanel.classList.remove(
+        "hidden"
+      );
+
     }
+
   }
+
 }
 
 
@@ -2131,58 +4237,114 @@ function closePeer(){
 
   clearTimeout(botTimer);
 
+
   try{
+
     if(hostConnection){
+
       hostConnection.close();
+
     }
-  }catch(e){}
+
+  }
+  catch(e){}
+
 
   hostConnection=null;
 
-  Object.values(connections).forEach(conn=>{
-    try{
-      conn.close();
-    }catch(e){}
-  });
+
+  Object.values(
+    connections
+  ).forEach(
+    conn=>{
+
+      try{
+
+        conn.close();
+
+      }
+      catch(e){}
+
+    }
+  );
+
 
   connections={};
 
+
   try{
+
     if(peer){
+
       peer.destroy();
+
     }
-  }catch(e){}
+
+  }
+  catch(e){}
+
 
   peer=null;
+
 }
 
 
 /* =========================================================
-   HELPERS
+   HTML ESCAPE
    ========================================================= */
 
 function escapeHTML(str){
 
   return String(str)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
 }
 
 
 /* =========================================================
-   KEYBOARD SUPPORT
+   KEYBOARD
    ========================================================= */
 
-document.addEventListener("keydown",e=>{
+document.addEventListener(
+  "keydown",
+  e=>{
 
-  if(e.key==="Escape"){
-    colorOverlay.classList.add("hidden");
+    if(
+      e.key==="Escape"
+    ){
+
+      colorOverlay.classList.add(
+        "hidden"
+      );
+
+    }
+
   }
-
-});
+);
 
 
 /* =========================================================
@@ -2190,8 +4352,13 @@ document.addEventListener("keydown",e=>{
    ========================================================= */
 
 hideAll();
-homePanel.classList.remove("hidden");
+
+homePanel.classList.remove(
+  "hidden"
+);
 
 </script>
+
 </body>
 </html>
+```
